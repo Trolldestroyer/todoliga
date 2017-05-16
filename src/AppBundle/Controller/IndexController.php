@@ -18,7 +18,7 @@ class IndexController extends Controller
            if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
                return $this->render(':index:index.html.twig');
            }
-           return $this ->redirectToRoute('app_liga_index');
+           return $this ->redirectToRoute('app_liga_ligas');
        }
 
     /**

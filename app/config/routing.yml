@@ -4,3 +4,8 @@ user:
 app.index:
     resource: "@AppBundle/Controller/IndexController.php"
     type: annotation
+
+app.liga:
+    resource: "@AppBundle/Controller/LigaController.php"
+    type: annotation
+    prefix: /liga

@@ -16,8 +16,8 @@
         </div>
         <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="">
             {% if (app.user == liga.creador) or (app.user == "Albert") %}
-                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"><a style="" href="{{ path('app_index_updateLiga',{'id': liga.id}) }}"> ✏️️ </a></div>
-                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"><a style="" href="{{ path('app_index_removeLiga',{'id': liga.id}) }}"> ✖️ </a></div>
+                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"><a style="" href="{{ path('app_liga_updateLiga',{'id': liga.id}) }}"> ✏️️ </a></div>
+                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"><a style="" href="{{ path('app_liga_removeLiga',{'id': liga.id}) }}"> ✖️ </a></div>
             {%   endif %}
         </div>
     </div>
@@ -27,11 +27,11 @@
     </div>
     <div class=" col-lg-3 col-md-3 col-sm-3 col-xs-3"
          style="margin-bottom: 1%;margin-right: 8%; background-color: rgba(169, 245, 242, 0.26);border: 2px solid rgba(0, 0, 0, 0.3); border-radius: 10px;">
-        <a href="{{ path('app_ronda_index', {'slug': liga.id}) }}"><h3>Rondas</h3></a>
+        <a href="{{ path('app_ronda_liga', {'slug': liga.id}) }}"><h3>Rondas</h3></a>
     </div>
     <div class=" col-lg-3 col-md-3 col-sm-3 col-xs-3"
          style="margin-bottom: 1%; background-color: rgba(169, 245, 242, 0.26);border: 2px solid rgba(0, 0, 0, 0.3); border-radius: 10px;">
-       <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"><a href="{{ path('app_equipo_index', {'slug': liga.id}) }}"> <h3>Equipos</h3> </a></div>
+       <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"><a href="{{ path('app_equipo_liga', {'slug': liga.id}) }}"> <h3>Equipos</h3> </a></div>
     </div>
     <div class="boton-detalles">
         <a href="{{ path('app_index_index') }}"><button class="btn btn-primary" > ↪️️ Volver</button></a>
