@@ -14,9 +14,12 @@ class IndexController extends Controller
      * @Route("/", name="app_index_index")
      */
     public function indexAction()
-    {
-        return $this->render(':index:index.html.twig');
-    }
+       {
+           if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+               return $this->render(':index:index.html.twig');
+           }
+           return $this ->redirectToRoute('app_liga_index');
+       }
 
     /**
      * @Route("/upload", name="app_index_upload")

@@ -1,0 +1,64 @@
+
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+    <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12"
+         style="margin-bottom: 1%; background-color: rgba(169, 245, 242, 0.26);border: 2px solid rgba(0, 0, 0, 0.3); border-radius: 10px;">
+        <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11"  style=" margin-bottom: 1%; padding: 1px; ">
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" ><h4>Title: </h4> </div>
+            <div class="col-lg-8 col-md-9 col-sm-12 col-xs-12" style="height: 40px; text-align: center;"> <h4>{{ liga.nombre }}</h4></div>
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" style=""><h4>Description:</h4> </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12" style="min-height: 30px; margin-top: 10px;">{{ liga.texto }}</div>
+            <div class="col-lg-5 col-md-6 col-sm-12 col-xs-12" style="height: 30px; margin-top: 10px;">Creacion: {{ liga.createdAt|date("d/m/Y H:i:s") }}</div><br>
+            <div class="col-lg-6 col-md-5 col-sm-12 col-xs-12" style="height: 30px; margin-top: 10px;">Última modificación: {{ liga.updatedAt|date("d/m/Y H:i:s") }}</div><br>
+            <div class="col-lg-4 col-md-3 col-sm-12 col-xs-12" style="height: 40px;">Creador: <a class="color-green" href="{{ path('app_usuario_show', {'slug': liga.creador.id }) }}">{{ liga.creador }}</a></div><br>
+        </div>
+        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="">
+            {% if (app.user == liga.creador) or (app.user == "Albert") %}
+                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"><a style="" href="{{ path('app_index_updateLiga',{'id': liga.id}) }}"> ✏️️ </a></div>
+                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"><a style="" href="{{ path('app_index_removeLiga',{'id': liga.id}) }}"> ✖️ </a></div>
+            {%   endif %}
+        </div>
+    </div>
+    <div class=" col-lg-3 col-md-3 col-sm-3 col-xs-3"
+         style="margin-bottom: 1%;margin-right: 8%;margin-left: 4%; background-color: rgba(169, 245, 242, 0.26);border: 2px solid rgba(0, 0, 0, 0.3); border-radius: 10px;">
+        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"><a style="" href="{{ path('app_entrenador_entrenadores', {'slug': liga.id}) }}"><h3>Entrenadores</h3></a></div>
+    </div>
+    <div class=" col-lg-3 col-md-3 col-sm-3 col-xs-3"
+         style="margin-bottom: 1%;margin-right: 8%; background-color: rgba(169, 245, 242, 0.26);border: 2px solid rgba(0, 0, 0, 0.3); border-radius: 10px;">
+        <a href="{{ path('app_ronda_index', {'slug': liga.id}) }}"><h3>Rondas</h3></a>
+    </div>
+    <div class=" col-lg-3 col-md-3 col-sm-3 col-xs-3"
+         style="margin-bottom: 1%; background-color: rgba(169, 245, 242, 0.26);border: 2px solid rgba(0, 0, 0, 0.3); border-radius: 10px;">
+       <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"><a href="{{ path('app_equipo_index', {'slug': liga.id}) }}"> <h3>Equipos</h3> </a></div>
+    </div>
+    <div class="boton-detalles">
+        <a href="{{ path('app_index_index') }}"><button class="btn btn-primary" > ↪️️ Volver</button></a>
+    </div>
+
+    <div class="contenedor-ligas container col-lg-12 col-md-12 col-sm-12 col-xs-12"
+         style="background-color: white; padding: 10px; ">
+
+        <div class="profile-body">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height: 40px; text-align: center;"> <h4>{{ liga.nombre }}</h4></div>
+
+            {% for equipo in liga.equipos %}
+                {% for entrenador in equipo.entrenadores %}
+                    <h1>{{ entrenador.nombre}}</h1>
+                {% endfor %}
+                    <div class=" col-lg-3 col-md-3 col-sm-3 col-xs-3"
+                     style=" margin-right: 8%; margin-bottom: 5%; min-height: 200px; background-color: rgba(169, 245, 242, 0.26);border: 2px solid rgba(0, 0, 0, 0.3); border-radius: 10px;">
+
+                    <div class="col-lg-12 col-md-11 col-sm-11 col-xs-11"  style=" margin-bottom: 1%; padding: 1px; ">
+                        <div class="col-lg-12 col-md-9 col-sm-12 col-xs-12" style="height: 40px; text-align: center; margin-top: 5%;"> <a><h4>{{ equipo.nombre }}</h4></a></div>
+                        <p>purque?</p>
+                    </div>
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+{% endblock %}

@@ -1,5 +1,155 @@
-{% extends '::base.html.twig' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ScrollProjecto</title>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-{% block body %}
-    <h1>New Project Created</h1>
-{% endblock %}
+
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class=" col-xs-12 col-sm-12 col-lg-12 container" id="botonera">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".myNavbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                </button>
+            </div>
+
+            <div class=" col-xs-5 col-sm-5 col-lg-5 ">
+                <div class="collapse navbar-collapse myNavbar" id="">
+                    <ul  class=" col-xs-12 col-sm-5 col-lg-12" >
+                        <li>
+                            <a href="#funcionalidad" class="botonMenu col-xs-12 col-sm-2 col-lg-3 btn " id="botoneraALaDer">Funci&oacute;n</a>
+                        </li>
+                        <li>
+                            <a href="#conocenos" class="botonMenu col-xs-12 col-sm-2 col-lg-3 btn " id="botoneraALaDer">Con&oacute;cenos</a>
+                        </li>
+                        <li>
+                            <a href="#inicio" class="botonMenu col-xs-12 col-sm-2 col-lg-3 btn " id="botoneraALaDer">Inicio</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="hidden-phone col-xs-2 col-sm-2 col-lg-2 ">
+                <div class="collapse navbar-collapse myNavbar">
+                    <img  id='logo' src='images/logo.png'>
+                </div>
+            </div>
+
+            <div  class="col-xs-5 col-sm-5 col-lg-5  ">
+                <div class="collapse navbar-collapse myNavbar " id="">
+                    <ul class="  col-xs-12 col-sm-12 col-lg-12" >
+                        <li>
+                            <a href="#contacta" class="botonMenu col-xs-12 col-sm-2 col-lg-3 btn " id="botoneraALaIzq">Contacta</a>
+                        </li>
+                        <li>
+                            <a href="#tarifa" class="botonMenu scol-xs-12 col-sm-2 col-lg-3 btn " id="botoneraALaIzq">Tarifa</a>
+                        </li>
+                        <li>
+                            <a class="botonMenu col-xs-12 col-sm-2 col-lg-3 btn " data-toggle="modal" data-target="#myModal" id="botoneraALaIzq">Terminos</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class=" sect sectUno" id="inicio">
+        <div class="col-xs-12 col-sm-12 col-lg-12 container">
+            <div class="col-xs-12 col-sm-12 col-lg-12 botonesCen">
+                <a href="/register" >
+                    <div class="col-xs-3 col-sm-3 col-lg-3 btn glyphicon glyphicon-pencil" id="botonRe">SignUp</div>
+                </a>
+                <a href="/login" >
+                    <div class="col-xs-3 col-sm-3 col-lg-3 btn glyphicon glyphicon-user" id="botonLo">Login</div>
+                </a>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-lg-12">
+                <a href="#conocenos" class="flec">
+                    <div  class="col-xs-1 col-sm-1 col-lg-1 flecha">
+                        <div id="" class=" qwe glyphicon glyphicon-menu-down"></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-lg-12 subsect" id="conocenos">
+        <h2>Lorem</h2>
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl
+            ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent
+            luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Expetenda tincidunt in sed, ex partem placerat sea, porro commodo ex eam. His putant aeterno interesset at. Usu ea mundi tincidunt, omnium virtute aliquando ius ex.
+            Ea aperiri sententiae duo. Usu nullam dolorum quaestio ei, sit vidit facilisis ea. Per ne impedit iracundia neglegentur. Consetetur neglegentur eum ut, vis animal legimus inimicus id. His audiam deserunt in, eum ubique voluptatibus
+            te.
+        </p>
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-lg-12 sect sectDos"></div>
+    <div class="col-xs-12 col-sm-12 col-lg-12 subsect" id="funcionalidad">
+        <h2>Lorem</h2>
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl
+            ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent
+            luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Expetenda tincidunt in sed, ex partem placerat sea, porro commodo ex eam. His putant aeterno interesset at. Usu ea mundi tincidunt, omnium virtute aliquando ius ex.
+            Ea aperiri sententiae duo. Usu nullam dolorum quaestio ei, sit vidit facilisis ea. Per ne impedit iracundia neglegentur. Consetetur neglegentur eum ut, vis animal legimus inimicus id. His audiam deserunt in, eum ubique voluptatibus
+            te.
+        </p>
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-lg-12 sect sectTres"></div>
+    <div class="col-xs-12 col-sm-12 col-lg-12 subsect" id="contacta">
+        <h2>Lorem</h2>
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl
+            ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent
+            luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Expetenda tincidunt in sed, ex partem placerat sea, porro commodo ex eam. His putant aeterno interesset at. Usu ea mundi tincidunt, omnium virtute aliquando ius ex.
+            Ea aperiri sententiae duo. Usu nullam dolorum quaestio ei, sit vidit facilisis ea. Per ne impedit iracundia neglegentur. Consetetur neglegentur eum ut, vis animal legimus inimicus id. His audiam deserunt in, eum ubique voluptatibus
+            te.
+        </p>
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-lg-12 sect sectQuatro"></div>
+    <div class="col-xs-12 col-sm-12 col-lg-12 subsect" id="tarifa">
+        <h2>Lorem</h2>
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl
+            ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent
+            luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Expetenda tincidunt in sed, ex partem placerat sea, porro commodo ex eam. His putant aeterno interesset at. Usu ea mundi tincidunt, omnium virtute aliquando ius ex.
+            Ea aperiri sententiae duo. Usu nullam dolorum quaestio ei, sit vidit facilisis ea. Per ne impedit iracundia neglegentur. Consetetur neglegentur eum ut, vis animal legimus inimicus id. His audiam deserunt in, eum ubique voluptatibus
+            te.
+        </p>
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-lg-12 sect sectCinco"></div>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog" >
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content" id="modalet">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Modal Header</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl
+                        ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent
+                        luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Expetenda tincidunt in sed, ex partem placerat sea, porro commodo ex eam. His putant aeterno interesset at. Usu ea mundi tincidunt, omnium virtute aliquando ius ex.
+                        Ea aperiri sententiae duo. Usu nullam dolorum quaestio ei, sit vidit facilisis ea. Per ne impedit iracundia neglegentur. Consetetur neglegentur eum ut, vis animal legimus inimicus id. His audiam deserunt in, eum ubique voluptatibus
+                        te.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
