@@ -73,7 +73,6 @@ class LigaController extends Controller
             $m = $this->getDoctrine()->getManager();
             $m->persist($p);
             $m->flush();
-            $this->addFlash('messages', 'Liga añadida');
             return $this->redirectToRoute('app_liga_ligas');
         }
         return $this->render(':liga:form.html.twig',
@@ -158,7 +157,6 @@ class LigaController extends Controller
 
         if($form->isValid()){
             $m->flush();
-            $this->addFlash('messages','Liga Updated');
 
             return $this->redirectToRoute('app_liga_ligas');
         }
