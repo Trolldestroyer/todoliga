@@ -33,6 +33,13 @@
 </head>
 
 <body>
+<div class="container">
+    <ul>
+        {% for message in app.session.flashBag.get('messages') %}
+            <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+</div>
 
 <script>
     var ss= 1;
