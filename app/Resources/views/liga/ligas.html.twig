@@ -1,36 +1,49 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
-    <h1>Ligas</h1>
 
-    <div class="contenedor-ligas container col-lg-12 col-md-12 col-sm-12 col-xs-12"
-            style="background-color: white; padding: 10px; ">
+<div id="fondoligas">
 
+    <h1 id="" class="ligas">Ligas</h1>
+
+    <div class=" contenedor-lig container col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 10px; ">
         <div class="profile-body">
-        {% for liga in ligas %}
-            <div class=" col-lg-3 col-md-3 col-sm-3 col-xs-3"
-                 style=" margin-right: 8%; margin-bottom: 5%; min-height: 200px; background-color: rgba(169, 245, 242, 0.26);border: 2px solid rgba(0, 0, 0, 0.3); border-radius: 10px;">
-                <div class="col-lg-12 col-md-1 col-sm-1 col-xs-1" style="">
+            {% for liga in ligas %}
+                 <div class="cajaligas col-lg-offset-2 col-lg-10 col-md-10 col-sm-10 col-xs-10" style=" ">
                     {% if (app.user == liga.creador) or (app.user == "Albert") %}
-                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"><a style="" href="{{ path('app_liga_showLiga', {'slug': liga.id}) }}"> 👁️ </a></div>
-                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"><a style="" href="{{ path('app_liga_updateLiga',{'id': liga.id}) }}"> ✏️️ </a></div>
-                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"><a style="" href="{{ path('app_liga_removeLiga',{'id': liga.id}) }}"> ✖️ </a></div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="border-bottom:2px solid rgba(0, 0, 0, 0.3); ">
+                            <div class="col-lg-2 col-lg-offset-10 col-md-12 col-sm-12 col-xs-12" >
+                                <div  class="col-lg-1 col-lg-offset-5 col-md-1 col-sm-1 col-xs-1">
+                                    <a  href="{{ path('app_liga_updateLiga',{'id': liga.id}) }}">✏️️</a>
+                                </div>
+                                <div  class="col-lg-1 col-lg-offset-0 col-md-1 col-sm-1 col-xs-1">
+                                    <a  href="{{ path('app_liga_removeLiga',{'id': liga.id}) }}">✖️</a>
+                                </div>
+                            </div>
+                        </div>
                     {%   endif %}
-                </div>
-                <div class="col-lg-12 col-md-11 col-sm-11 col-xs-11"  style=" margin-bottom: 1%; padding: 1px; ">
-                    <div class="col-lg-12 col-md-9 col-sm-12 col-xs-12" style="height: 40px; text-align: center; margin-top: 5%;"> <a href="{{ path('app_liga_showLiga', {'slug': liga.id}) }}"><h4>{{ liga.nombre }}</h4></a></div>
-                    <div class="col-lg-12 col-md-9 col-sm-12 col-xs-12" style="height: 30px; margin-top: 10px; margin-bottom: 10%;">Creacion: {{ liga.createdAt|date("d/m/Y") }}</div>
-                    <div class="col-lg-12 col-md-9 col-sm-12 col-xs-12" style="height: 30px; margin-top: 10px; margin-bottom: 10%;">Modificado: {{ liga.updatedAt|date("d/m/Y") }}</div>
-                    <div class="col-lg-12 col-md-9 col-sm-12 col-xs-12" style="height: 40px;">Autor: <a class="color-green" href="{{ path('app_usuario_show', {'slug': liga.creador.id }) }}">{{ liga.creador }}</a></div><br>
-                </div>
-            </div>
-
-        {% endfor %}
+                        <div class="col-lg-12 col-md-11 col-sm-11 col-xs-11"  style=" ">
+                            <div class="col-lg-4 col-md-3 col-sm-3 col-xs-3" style=" text-align: center; "> <a href="{{ path('app_liga_showLiga', {'slug': liga.id}) }}"><h4 style="margin-bottom: auto!important;">{{ liga.nombre }}</h4></a></div>
+                            <div class="col-lg-6 col-md-9 col-sm-12 col-xs-12" style="margin-top: 10px;">{{ liga.texto }}</div>
+                            <div class="col-lg-2 col-md-9 col-sm-12 col-xs-12" style="margin-top: 10px;">Autor: <a href="{{ path('app_usuario_show', {'slug': liga.creador.id }) }}">{{ liga.creador }}</a></div>
+                            {% if (app.user == liga.creador) or (app.user == "Albert") %}
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="">
+                                  <div class="col-lg-offset-6 col-lg-3 col-md-9 col-sm-12 col-xs-12" style="margin-top: 8px; ">Creacion: {{ liga.createdAt|date("d/m/Y") }}</div>
+                                  <div class="col-lg-3 col-md-9 col-sm-12 col-xs-12" style="margin-top: 8px; ">Modificado: {{ liga.updatedAt|date("d/m/Y") }}</div>
+                                </div>
+                            {%   endif %}
+                        </div>
+                 </div>
+            {% endfor %}
         </div>
     </div>
-
-    <div style="margin-top: 10px">
-        <a href="{{ path('app_liga_insertLiga') }}">New Liga</a>
-    </div>
-
+    <a id="men">Menu a la izquierda</a>
+</div>
 {% endblock %}
+
+{% block menu %}
+    <div style="margin-top: 10px; color: white; text-align: center;" >
+        <a style="padding-bottom: 5px;margin-bottom: 10px;border-bottom: 2px solid rgba(0, 0, 0, 0.3);"  class=" botonMenu col-xs-12 col-sm-12 col-lg-12" href="{{ path('app_liga_insertLiga') }}">New Liga</a>
+    </div>
+{% endblock %}
+

@@ -3,6 +3,8 @@
 }
 html, body {
 	height: 100%;
+	padding-top: 0px;
+	padding-bottom: 0px;
 }
 
 h1, h2, h3, h4, h5, h6, p {
@@ -12,7 +14,7 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 
-.navbar {
+.navbarInicio {
 	position: fixed!important;
 	width: 100%!important;
 	height: 3%!important;
@@ -175,3 +177,27 @@ img#logo{
 	margin-left: -6.5px!important;
 }
 
+.ligas {
+	margin-bottom: 0.5%!important;
+	border-bottom:2px solid rgba(0, 0, 0, 0.4);
+	background-color: rgba(0,0,0,.5)!important;
+	color: #e6edfa!important;
+	padding: 0.5% 0% 0.5% 1%!important;
+
+}
+
+#fondoligas {
+	height: 100%!important;
+	background-image: url('../images/img5.jpg');
+	background-size: 100%;
+	background-repeat:  no-repeat;
+	background-attachment: fixed;
+ }
+
+.cajaligas{
+	padding-bottom: 8px;
+	margin-bottom: 1%;
+	background-color: rgba(169, 245, 242, 0.9);
+	border: 2px solid rgba(0, 0, 0, 0.3);
+	border-radius: 10px;
+}

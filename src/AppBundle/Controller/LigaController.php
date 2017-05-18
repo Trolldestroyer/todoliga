@@ -16,6 +16,9 @@ class LigaController extends Controller
      */
     public function indexAction()
     {
+        if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            throw $this->createAccessDeniedException();
+        }
         $m = $this->getDoctrine()->getManager();
         $repo=$m->getRepository('AppBundle:Liga');
         $ligas = $repo->findAll();
@@ -33,6 +36,13 @@ class LigaController extends Controller
     public function insertLigaAction()
     {
         $p= new Liga();
+        if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            throw $this->createAccessDeniedException();
+        }
+
+        if (!$this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+            throw $this->createAccessDeniedException();
+        }
         $form = $this->createForm(LigaType::class, $p);
         return $this->render(':liga:form.html.twig',
             [
@@ -66,7 +76,6 @@ class LigaController extends Controller
             $this->addFlash('messages', 'Liga añadida');
             return $this->redirectToRoute('app_liga_ligas');
         }
-        $this->addFlash('messages','Review your form data');
         return $this->render(':liga:form.html.twig',
             [
                 'form'  =>  $form->createView(),
@@ -154,7 +163,6 @@ class LigaController extends Controller
             return $this->redirectToRoute('app_liga_ligas');
         }
 
-        $this->addFlash('message' , 'Review your form');
         return $this->render(':liga:form.html.twig',
             [
                 'form'=> $form->createView(),

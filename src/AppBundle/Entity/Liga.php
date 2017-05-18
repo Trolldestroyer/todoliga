@@ -27,6 +27,13 @@ class Liga
      * @var string
      *
      * @ORM\Column(name="nombre", type="string", length=255)
+     * @Assert\NotBlank(message="Name cannot be empty")
+     * @Assert\Length(
+     *     min="3",
+     *     max="21",
+     *     minMessage="Description too short 3 or more!",
+     *     maxMessage="Description too long max 21!"
+     * )
      */
     private $nombre;
 
