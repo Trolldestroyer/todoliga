@@ -5,6 +5,7 @@ html, body {
 	height: 100%;
 	padding-top: 0px;
 	padding-bottom: 0px;
+
 }
 
 h1, h2, h3, h4, h5, h6, p {
@@ -187,7 +188,7 @@ img#logo{
 }
 
 #fondoligas {
-	height: 100%!important;
+	height: 650px!important;
 	background-image: url('../images/img5.jpg');
 	background-size: 100%;
 	background-repeat:  no-repeat;
@@ -200,4 +201,13 @@ img#logo{
 	background-color: rgba(169, 245, 242, 0.9);
 	border: 2px solid rgba(0, 0, 0, 0.3);
 	border-radius: 10px;
+}
+
+#milk {
+	margin-bottom: 5px;
+}
+
+#men1{
+color: white;
+
 }

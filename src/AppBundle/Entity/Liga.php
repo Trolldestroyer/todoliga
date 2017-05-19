@@ -167,19 +167,27 @@ class Liga
     }
 
     /**
-     * @return mixed
-     */
-    public function getCreador()
-    {
-        return $this->creador;
-    }
-
-    /**
-     * @param mixed $creador
+     * Set creador
+     *
+     * @param string $creador
+     *
+     * @return Liga
      */
     public function setCreador($creador)
     {
         $this->creador = $creador;
+
+        return $this;
+    }
+
+    /**
+     * Get creador
+     *
+     * @return string
+     */
+    public function getCreador()
+    {
+        return $this->creador;
     }
 
 

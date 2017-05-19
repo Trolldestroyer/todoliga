@@ -45,4 +45,19 @@ class IndexController extends Controller
             'form' => $form->createView(),
         ]);
     }
+    /**
+     * @Route("/usuario/{slug}.html", name="app_usuario_show")
+     *
+     */
+    public function showUserAction($slug)
+    {
+        $m = $this ->getDoctrine()->getManager();
+        $repository= $m->getRepository('UserBundle:User');
+        $usuario=$repository->find($slug);
+        return $this->render('usuario/usuario.html.twig',[
+            'usuario' => $usuario,
+        ]);
+    }
+
+
 }

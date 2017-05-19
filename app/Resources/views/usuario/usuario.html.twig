@@ -1,0 +1,38 @@
+{% extends '::base.html.twig' %}
+
+{% block headTitle %}{{ usuario.username }}{% endblock %}
+
+{% block body %}
+    <div class="boton-detalles">
+        <a href="{{ path('app_index_index') }}"><button class="btn btn-primary" > ↪️️ Volver</button></a>
+    </div>
+    <div>
+        <h1>Perfil de {{ usuario.username }}</h1>
+        <div class="profile-bio" style="margin-bottom:30px">
+            <div class="row">
+                <div class="col-md-7">
+                    <h2>{{ usuario.username }}</h2>
+                    <span><strong>E-mail:</strong> {{ usuario.email }}</span>
+                    <span><strong>Creado el dia:</strong> {{ usuario.createdAt | date("d/m/Y H:i:s") }}</span>
+                    <hr>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget massa nec turpis congue bibendum. Integer nulla felis, porta suscipit nulla et, dignissim commodo nunc. Morbi a semper nulla.</p>
+                    <p>Proin mauris odio, pharetra quis ligula non, vulputate vehicula quam. Nunc in libero vitae nunc ultricies tincidunt ut sed leo. Sed luctus dui ut congue consequat. Cras consequat nisl ante, nec malesuada velit pellentesque ac. Pellentesque nec arcu in ipsum iaculis convallis.</p>
+                </div>
+            </div>
+        </div>
+        <h1 style="padding-top:30px;margin-bottom: 50px;">Ligas creadas por {{ usuario.username }}</h1>
+        <div class="profile-body">
+            {% for liga in usuario.ligasCreadas %}
+                <div class="col-sm-6 profile-body" style="">
+                    <div>
+                        <h2><a class="color-dark" href="{{ path('app_liga_showLiga', {'slug': liga.id}) }}">👁 ️{{ liga.nombre }}</a></h2>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+
+
+{% endblock %}

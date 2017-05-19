@@ -100,4 +100,21 @@ class User extends BaseUser
     {
         return $this->username;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getLigasCreadas()
+    {
+        return $this->ligasCreadas;
+    }
+
+    /**
+     * @param mixed $ligasCreadas
+     */
+    public function setLigasCreadas($ligasCreadas)
+    {
+        $this->ligasCreadas = $ligasCreadas;
+    }
+
 }
