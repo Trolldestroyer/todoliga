@@ -23,6 +23,7 @@ class LigaType extends  AbstractType
         $builder
             ->add('nombre', TextType::class)
             ->add('texto', TextType::class)
+
         ;
     }
     public function configureOptions(OptionsResolver $resolver)
