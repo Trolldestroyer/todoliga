@@ -8,7 +8,7 @@ html, body {
 
 }
 
-h1, h2, h3, h4, h5, h6, p {
+h1, h2, h3, h5, h6, p {
 	margin-bottom: 20px;
 	padding-left: 2%;
 
@@ -181,33 +181,110 @@ img#logo{
 .ligas {
 	margin-bottom: 0.5%!important;
 	border-bottom:2px solid rgba(0, 0, 0, 0.4);
-	background-color: rgba(0,0,0,.5)!important;
-	color: #e6edfa!important;
+	background-color: rgba(23, 32, 42,0.9)!important;
+	color: #a9a9a9!important;
 	padding: 0.5% 0% 0.5% 1%!important;
+	margin-top: 0px;
 
 }
 
 #fondoligas {
 	height: 650px!important;
-	background-image: url('../images/img5.jpg');
+	background-image: url('../images/img4.jpg');
 	background-size: 100%;
 	background-repeat:  no-repeat;
 	background-attachment: fixed;
- }
+	margin-top: 10px;
+	-webkit-box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
+	-moz-box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
+	box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
+	border: 2px solid rgba(171, 178, 185, 0.4);
 
+}
+
+.fondoliga {
+	height: 650px!important;
+	background-image: url('../images/img6.jpg');
+	background-size: 100%;
+	background-repeat:  no-repeat;
+	background-attachment: fixed;
+	margin-top: 10px;
+	-webkit-box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
+	-moz-box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
+	box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
+	border: 2px solid rgba(171, 178, 185, 0.4);
+
+}
 .cajaligas{
 	padding-bottom: 8px;
 	margin-bottom: 1%;
-	background-color: rgba(169, 245, 242, 0.9);
+	background-color: rgba(86, 101, 115, 0.9);
 	border: 2px solid rgba(0, 0, 0, 0.3);
 	border-radius: 10px;
+	/*background-color: #363636;*/
+	-webkit-box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
+	-moz-box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
+	box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);"
 }
 
+.cajaliga{
+	padding-bottom: 8px;
+	margin-bottom: 1%;
+	background-color: rgba(86, 101, 115, 0.9);
+	border: 2px solid rgba(0, 0, 0, 0.3);
+	border-radius: 10px;
+	/*background-color: #363636;*/
+	-webkit-box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
+	-moz-box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
+	box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);"
+}
 #milk {
 	margin-bottom: 5px;
 }
 
-#men1{
-color: white;
+#menuinterior{
+	color: black;
+	float: right;
+	margin-bottom: 5px;
+	margin-top: 5px;
+	font-size: 15px;
 
 }
+
+ul .botonMenuInterior{
+	color: #a9a9a9!important;
+	text-decoration: none!important;
+	text-align: center;
+}
+
+.botonMenuInterior:hover{
+	color:white!important;
+
+}
+#menubase{
+	-webkit-box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
+	-moz-box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
+	box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
+	width: 250px;
+	background-color: rgba(48, 55, 59,0.9)!important;
+	margin-top: 6%;
+	position: absolute;
+	z-index: 3;
+	margin-left: -240px;
+	border-bottom-right-radius: 3%;
+	border-top-right-radius: 3%;
+	text-align: right;
+	padding: 3px 15px 3px 12px;
+
+
+}
+
+.verde{
+	color: #88cf58 !important;
+	text-decoration: none!important;
+}
+
+.grisclaro{
+	color:#EDEFF1;
+}
+

@@ -32,13 +32,13 @@
 
 </head>
 
-<body>
+<body style="">
 
 
 <script>
     var fijar= false;
     $(document).ready(function(){
-        $("#men").on({
+        $("#menubase").on({
                 mouseenter: function(){
                     if(fijar==false) {
                         $(this).css("margin-left", "0px");
@@ -48,26 +48,31 @@
                         $(this).css("margin-left", "-240px");
                     }}, });
 
-            $("#men1").on({
+            $("#menuinterior").on({
             click: function(){
 
                 if(fijar==false){
-                    $(men).css("margin-left", "0px");
+                    $(menubase).css("margin-left", "0px");
+                    $(menuinterior).css("color", "#88cf58");
                     fijar=true;
                 }else{
+                    $(menuinterior).css("color", "black");
                     fijar=false;
                 }  }
         });
     });
 
 </script>
-<div id="men" style="width: 250px;background-color: #282828; margin-top: 6%; position: absolute;z-index: 3;margin-left: -240px; border-bottom-right-radius: 3%;border-top-right-radius: 3%; text-align: right;padding: 5px 10px 0px 10px; "><a id="men1">📌</a>
-            <ul class="col-xs-12 col-sm-12 col-lg-12" style="list-style-type: none; background-color: #363636;margin-bottom: 5%!important; ">
+<div id="menubase" style=" "><div id="menuinterior">📌</div>
+            <ul class="col-xs-12 col-sm-12 col-lg-12" style="border: 2px solid rgba(171, 178, 185, 0.1);list-style-type: none; 	background-color: rgba(121, 121, 121,0.3)!important;
+-webkit-box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
+	-moz-box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
+	box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);">
                 <t class=" col-xs-12 col-sm-12 col-lg-12">
                     <h4 style="text-align:center; color:white; border-bottom: 2px solid rgba(0, 0, 0, 0.3); margin-bottom: 8px!important; padding-bottom: 5px;" class=" col-xs-12 col-sm-12 col-lg-12" >Menu</h4>
                 </t>
                 <t>
-                    <a href="/liga" class=" botonMenu col-xs-12 col-sm-12 col-lg-12" id="milk" >Inicio</a>
+                    <a href="/liga" class=" botonMenuInterior col-xs-12 col-sm-12 col-lg-12" id="milk" >Inicio</a>
                 </t>
                 {% block menu %}{% endblock %}
                 <t>
