@@ -3,6 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Equipo
@@ -70,7 +72,26 @@ class Equipo
      */
     private $updatedAt;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Liga", inversedBy="liga")
+     */
+    private $liga;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Trascastro\UserBundle\Entity\User", inversedBy="equiposCreados")
+     */
+    private $creador;
+
+    public function __construct()
+    {
+        $this->puntos = 0;
+        $this->trofeos =0;
+       /*<!-- $this->entrenadores = new ArrayCollection();
+        $this->players = new ArrayCollection(); -->*/
+        $this->comentarios = new ArrayCollection();
+        $this->createdAt = new \DateTime();
+        $this->updatedAt = $this->createdAt;
+    }
     /**
      * Get id
      *
@@ -248,5 +269,39 @@ class Equipo
     {
         return $this->updatedAt;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getLiga()
+    {
+        return $this->liga;
+    }
+
+    /**
+     * @param mixed $liga
+     */
+    public function setLiga($liga)
+    {
+        $this->liga = $liga;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCreador()
+    {
+        return $this->creador;
+    }
+
+    /**
+     * @param mixed $creador
+     */
+    public function setCreador($creador)
+    {
+        $this->creador = $creador;
+    }
+
+
 }
 

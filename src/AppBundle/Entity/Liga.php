@@ -70,9 +70,15 @@ class Liga
      */
     private $updatedAt;
 
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Equipo", mappedBy="liga", cascade={"remove"})
+     */
+    private $equipos;
+
     public function __construct()
     {
 
+        $this->equipos = new ArrayCollection();
         $this->createdAt = new \DateTime();
         $this->updatedAt = $this->createdAt;
     }
@@ -188,6 +194,22 @@ class Liga
     public function getCreador()
     {
         return $this->creador;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEquipos()
+    {
+        return $this->equipos;
+    }
+
+    /**
+     * @param mixed $equipos
+     */
+    public function setEquipos($equipos)
+    {
+        $this->equipos = $equipos;
     }
 
 

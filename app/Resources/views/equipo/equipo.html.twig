@@ -4,7 +4,7 @@
 {% block body %}
     <div class="fondoliga">
 
-        <h1 class="ligas">Liga {{ liga.nombre }}</h1>
+        <h1 class="ligas">Liga {{ equipo.nombre }}</h1>
 
         <div class="cajaliga col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10 col-sm-10 col-xs-offset-1 col-xs-10" style=" ">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="border-bottom:2px solid rgba(0, 0, 0, 0.3); ">
@@ -36,12 +36,22 @@
     <div class="cajaliga col-lg-offset-1 col-lg-2 col-md-offset-1 col-md-3 col-sm-3 col-xs-offset-1 col-xs-3" style=" ">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="border-bottom:2px solid rgba(0, 0, 0, 0.3); ">
             <div class="grisclaro col-lg-3 col-md-1 col-sm-1 col-xs-1"  href="{{ path('app_liga_updateLiga',{'id': liga.id}) }}">Rondas</div>
+            {% if (app.user == liga.creador) or (app.user == "Albert") %}
+                <div style=" padding-left: 0px; padding-right: 10px;" class="col-lg-1 col-lg-offset-8 col-md-1 col-sm-1 col-xs-1">
+                    <a class="verde"  href="{{ path('app_liga_updateLiga',{'id': liga.id}) }}">✏️️</a>
+                </div>
+        {%   endif %}
         </div>
     </div>
 <!-- Equipos-->
         <div class="cajaliga col-lg-3 col-lg-offset-1 col-md-3 col-sm-3 col-xs-3" style=" ">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="border-bottom:2px solid rgba(0, 0, 0, 0.3); ">
-                    <a class="grisclaro col-lg-3 col-md-1 col-sm-1 col-xs-1"  href="{{ path('app_equipo_equipos',{'slug': liga.id}) }}">Equipos</a>
+                    <div class="grisclaro col-lg-3 col-md-1 col-sm-1 col-xs-1"  href="{{ path('app_liga_updateLiga',{'id': liga.id}) }}">Equipos</div>
+                {% if (app.user == liga.creador) or (app.user == "Albert") %}
+                    <div style=" padding-left: 0px; padding-right: 0px;" class="col-lg-1 col-lg-offset-8 col-md-1 col-sm-1 col-xs-1">
+                        <a class="verde"  href="{{ path('app_liga_updateLiga',{'id': liga.id}) }}">✏️️</a>
+                    </div>
+                {%   endif %}
             </div>
             <div>
     {% for equipo in liga.equipos %}
@@ -53,6 +63,11 @@
         <div class="cajaliga col-lg-3 col-lg-offset-1 col-md-3 col-sm-3 col-xs-3" style=" ">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="border-bottom:2px solid rgba(0, 0, 0, 0.3); ">
                     <div class="grisclaro col-lg-3 col-md-1 col-sm-1 col-xs-1"  href="{{ path('app_liga_updateLiga',{'id': liga.id}) }}">Entrenadores</div>
+                {% if (app.user == liga.creador) or (app.user == "Albert") %}
+                    <div style=" padding-left: 0px; padding-right: 0px;" class="col-lg-1 col-lg-offset-8 col-md-1 col-sm-1 col-xs-1">
+                        <a class="verde"  href="{{ path('app_liga_updateLiga',{'id': liga.id}) }}">✏️️</a>
+                    </div>
+                {%   endif %}
             </div>
         </div>
 

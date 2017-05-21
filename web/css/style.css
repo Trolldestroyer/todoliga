@@ -215,6 +215,20 @@ img#logo{
 	border: 2px solid rgba(171, 178, 185, 0.4);
 
 }
+
+.fondoequipos {
+	height: 650px!important;
+	background-image: url('../images/img5.jpg');
+	background-size: 100%;
+	background-repeat:  no-repeat;
+	background-attachment: fixed;
+	margin-top: 10px;
+	-webkit-box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
+	-moz-box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
+	box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
+	border: 2px solid rgba(171, 178, 185, 0.4);
+
+}
 .cajaligas{
 	padding-bottom: 8px;
 	margin-bottom: 1%;

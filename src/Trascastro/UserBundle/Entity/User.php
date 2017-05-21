@@ -49,10 +49,16 @@ class User extends BaseUser
      */
     private $ligasCreadas;
 
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Equipo", mappedBy="creador")
+     */
+    private $equiposCreados;
+
     public function __construct()
     {
         parent::__construct();
 
+        $this->equiposCreados = new ArrayCollection();
         $this->ligasCreadas = new ArrayCollection();
         $this->createdAt    = new \DateTime();
         $this->updatedAt    = $this->createdAt;

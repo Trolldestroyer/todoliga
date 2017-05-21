@@ -9,3 +9,8 @@ app.liga:
     resource: "@AppBundle/Controller/LigaController.php"
     type: annotation
     prefix: /liga
+
+app.equipo:
+    resource: "@AppBundle/Controller/EquipoController.php"
+    type: annotation
+    prefix: /equipo
