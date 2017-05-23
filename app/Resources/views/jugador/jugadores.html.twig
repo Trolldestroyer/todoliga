@@ -4,13 +4,13 @@
 
 <div class="fondoequipos" style="	 ">
 
-    <h1 id="" class="ligas">Equipos</h1>
+    <h1 id="" class="ligas">Jugadores</h1>
 
     <div class=" contenedor-lig container col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 10px;">
         <div class="profile-body">
-            {% for equipo in liga.equipos %}
+            {% for jugador in equipo.jugadores %}
                  <div class="cajaligas col-lg-offset-3 col-lg-8 col-md-offset-3 col-md-8 col-sm-8 col-xs-offset-3 col-xs-8">
-                    {% if (app.user == liga.creador) or (app.user == "Albert") %}
+                    {% if (app.user == jugador.creador) or (app.user == "Albert") %}
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="border-bottom:2px solid rgba(0, 0, 0, 0.3); ">
                             <div class="col-lg-2 col-lg-offset-9 col-md-12 col-sm-12 col-xs-12" >
                                 <div  class="col-lg-1 col-lg-offset-5 col-md-1 col-sm-1 col-xs-1">
@@ -24,8 +24,8 @@
                     {%   endif %}
                         <div class="col-lg-12 col-md-11 col-sm-11 col-xs-11"  style=" ">
                             <div class="col-lg-4 col-md-3 col-sm-12 col-xs-12" style=" text-align: center; "> <a style="	text-decoration: none!important;
-" href="{{ path('app_equipo_showEquipo', {'slug': equipo.id}) }}"><h4 class="grisclaro" style="margin-bottom: auto!important;">{{ equipo.nombre }}</h4></a></div>
-                            <div class="col-lg-2 col-md-9 col-sm-12 col-xs-12" style="margin-top: 10px;">Autor: <a class="verde" href="{{ path('app_usuario_show', {'slug': liga.creador.id }) }}">{{ equipo.creador }}</a></div>
+" href="{{ path('app_equipo_showEquipo', {'slug': equipo.id}) }}"><h4 class="grisclaro" style="margin-bottom: auto!important;">{{ jugador.nombre }}</h4></a></div>
+                            <div class="col-lg-2 col-md-9 col-sm-12 col-xs-12" style="margin-top: 10px;">Autor: <a class="verde" href="{{ path('app_usuario_show', {'slug': jugador.creador.id }) }}">{{ jugador.creador }}</a></div>
                         </div>
                  </div>
             {% endfor %}
@@ -34,9 +34,4 @@
 </div>
 {% endblock %}
 
-{% block menu %}
-    <div style="margin-top: 10px; color: white; text-align: center;" >
-        <a style=""  class=" botonMenuInterior col-xs-12 col-sm-12 col-lg-12" href="{{ path('app_equipo_insertEquipo', {'id': liga.id}) }}">Añadir Equipo</a>
-    </div>
 
-{% endblock %}

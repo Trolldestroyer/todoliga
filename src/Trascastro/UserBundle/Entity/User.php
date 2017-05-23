@@ -54,10 +54,16 @@ class User extends BaseUser
      */
     private $equiposCreados;
 
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Jugador", mappedBy="creador")
+     */
+    private $jugadoresCreados;
+
     public function __construct()
     {
         parent::__construct();
 
+        $this->jugadoresCreados = new ArrayCollection();
         $this->equiposCreados = new ArrayCollection();
         $this->ligasCreadas = new ArrayCollection();
         $this->createdAt    = new \DateTime();
@@ -121,6 +127,38 @@ class User extends BaseUser
     public function setLigasCreadas($ligasCreadas)
     {
         $this->ligasCreadas = $ligasCreadas;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEquiposCreados()
+    {
+        return $this->equiposCreados;
+    }
+
+    /**
+     * @param mixed $equiposCreados
+     */
+    public function setEquiposCreados($equiposCreados)
+    {
+        $this->equiposCreados = $equiposCreados;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getJugadoresCreados()
+    {
+        return $this->jugadoresCreados;
+    }
+
+    /**
+     * @param mixed $jugadoresCreados
+     */
+    public function setJugadoresCreados($jugadoresCreados)
+    {
+        $this->jugadoresCreados = $jugadoresCreados;
     }
 
 }

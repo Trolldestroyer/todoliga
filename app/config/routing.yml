@@ -14,3 +14,8 @@ app.equipo:
     resource: "@AppBundle/Controller/EquipoController.php"
     type: annotation
     prefix: /equipo
+
+app.jugador:
+    resource: "@AppBundle/Controller/JugadorController.php"
+    type: annotation
+    prefix: /jugador

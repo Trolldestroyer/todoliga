@@ -1,0 +1,29 @@
+{% extends '::base.html.twig' %}
+
+
+{% block body %}
+    <div class="fondoliga">
+
+    <h1 class="ligas">Crear Jugador</h1>
+
+    <div class="cajaliga col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10 col-sm-10 col-xs-offset-1 col-xs-10" style=" ">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="border-bottom:2px solid rgba(0, 0, 0, 0.3); ">
+        <form method="post" action="{{ action }}" novalidate="novalidate">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" >
+                <ul>
+                    {% for error in form.vars.errors %}
+                        <li>{{ error.message }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 5px;">{{ form_errors(form.nombre) }}{{ form_label(form.nombre) }}: {{ form_widget(form.nombre) }}</div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 15px;">{{ form_errors(form.apellidos) }}{{ form_label(form.apellidos) }}: {{ form_widget(form.apellidos) }}</div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 15px;">{{ form_errors(form.numero) }}{{ form_label(form.numero) }}: {{ form_widget(form.numero) }}</div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 15px;">{{ form_errors(form.posicion) }}{{ form_label(form.posicion) }}: {{ form_widget(form.posicion) }}</div>
+
+            {{ form_rest(form) }}<br>
+            <div><input class=" col-lg-offset-10 col-lg-2 col-md-offset-10 col-md-2 col-sm-2 col-xs-offset-10 col-xs-2 btn-success" style="margin-bottom: 5px" type="submit" value="Ok"></div>
+        </form>
+    </div>
+    </div>
+{% endblock %}

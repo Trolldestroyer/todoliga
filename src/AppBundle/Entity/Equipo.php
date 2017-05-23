@@ -82,13 +82,18 @@ class Equipo
      */
     private $creador;
 
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Jugador", mappedBy="equipo", cascade={"remove"})
+     */
+    private $jugadores;
+
     public function __construct()
     {
         $this->puntos = 0;
         $this->trofeos =0;
        /*<!-- $this->entrenadores = new ArrayCollection();
-        $this->players = new ArrayCollection(); -->*/
-        $this->comentarios = new ArrayCollection();
+        $this->comentarios = new ArrayCollection();-->*/
+        $this->jugadores= new ArrayCollection();
         $this->createdAt = new \DateTime();
         $this->updatedAt = $this->createdAt;
     }
@@ -270,6 +275,23 @@ class Equipo
         return $this->updatedAt;
     }
 
+
+    /**
+     * @return mixed
+     */
+    public function getCreador()
+    {
+        return $this->creador;
+    }
+
+    /**
+     * @param mixed $creador
+     */
+    public function setCreador($creador)
+    {
+        $this->creador = $creador;
+    }
+
     /**
      * @return mixed
      */
@@ -289,17 +311,17 @@ class Equipo
     /**
      * @return mixed
      */
-    public function getCreador()
+    public function getJugadores()
     {
-        return $this->creador;
+        return $this->jugadores;
     }
 
     /**
-     * @param mixed $creador
+     * @param mixed $jugadores
      */
-    public function setCreador($creador)
+    public function setJugadores($jugadores)
     {
-        $this->creador = $creador;
+        $this->jugadores = $jugadores;
     }
 
 

@@ -252,6 +252,19 @@ img#logo{
 	-moz-box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
 	box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);"
 }
+
+
+.cajaequipo{
+	padding-bottom: 8px;
+	margin-bottom: 1%;
+	background-color: #E5EF4A;
+	border: 2px solid rgba(0, 0, 0, 0.3);
+	border-radius: 10px;
+	/*background-color: #363636;*/
+	-webkit-box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
+	-moz-box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
+	box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);"
+}
 #milk {
 	margin-bottom: 5px;
 }
