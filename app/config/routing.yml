@@ -19,3 +19,8 @@ app.jugador:
     resource: "@AppBundle/Controller/JugadorController.php"
     type: annotation
     prefix: /jugador
+
+app.entrenador:
+    resource: "@AppBundle/Controller/EntrenadorController.php"
+    type: annotation
+    prefix: /entrenador

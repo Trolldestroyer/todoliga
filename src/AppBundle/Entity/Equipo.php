@@ -87,12 +87,15 @@ class Equipo
      */
     private $jugadores;
 
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Entrenador", mappedBy="equipo", cascade={"remove"})
+     */
+    private $entrenadores;
+
     public function __construct()
     {
         $this->puntos = 0;
         $this->trofeos =0;
-       /*<!-- $this->entrenadores = new ArrayCollection();
-        $this->comentarios = new ArrayCollection();-->*/
         $this->jugadores= new ArrayCollection();
         $this->createdAt = new \DateTime();
         $this->updatedAt = $this->createdAt;
@@ -322,6 +325,22 @@ class Equipo
     public function setJugadores($jugadores)
     {
         $this->jugadores = $jugadores;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEntrenadores()
+    {
+        return $this->entrenadores;
+    }
+
+    /**
+     * @param mixed $entrenadores
+     */
+    public function setEntrenadores($entrenadores)
+    {
+        $this->entrenadores = $entrenadores;
     }
 
 

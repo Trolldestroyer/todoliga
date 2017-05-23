@@ -35,8 +35,10 @@
 {% endblock %}
 
 {% block menu %}
-    <div style="margin-top: 10px; color: white; text-align: center;" >
+    {% if (app.user == liga.creador) or (app.user == "Albert") %}
+        <div style="margin-top: 10px; color: white; text-align: center;" >
         <a style=""  class=" botonMenuInterior col-xs-12 col-sm-12 col-lg-12" href="{{ path('app_equipo_insertEquipo', {'id': liga.id}) }}">Añadir Equipo</a>
     </div>
+    {%   endif %}
 
 {% endblock %}

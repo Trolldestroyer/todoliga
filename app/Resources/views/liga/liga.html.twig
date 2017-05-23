@@ -33,30 +33,26 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
         <!-- Rondas -->
-    <div class="cajaliga col-lg-offset-1 col-lg-2 col-md-offset-1 col-md-3 col-sm-3 col-xs-offset-1 col-xs-3" style=" ">
+    <div class="cajaliga col-lg-offset-1 col-lg-4 col-md-offset-1 col-md-3 col-sm-3 col-xs-offset-1 col-xs-3" style=" ">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="border-bottom:2px solid rgba(0, 0, 0, 0.3); ">
             <div class="grisclaro col-lg-3 col-md-1 col-sm-1 col-xs-1"  href="{{ path('app_liga_updateLiga',{'id': liga.id}) }}">Rondas</div>
         </div>
     </div>
 <!-- Equipos-->
-        <div class="cajaliga col-lg-3 col-lg-offset-1 col-md-3 col-sm-3 col-xs-3" style=" ">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="border-bottom:2px solid rgba(0, 0, 0, 0.3); ">
-                    <a class="grisclaro col-lg-3 col-md-1 col-sm-1 col-xs-1"  href="{{ path('app_equipo_equipos',{'slug': liga.id}) }}">Equipos</a>
+        <div class="cajaliga col-lg-5 col-lg-offset-1 col-md-3 col-sm-3 col-xs-3" style=" ">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 5px; border-bottom:2px solid rgba(0, 0, 0, 0.3); ">
+                    <a class="grisclaro col-lg-6 col-md-6 col-sm-6 col-xs-6" style="" href="{{ path('app_equipo_equipos',{'slug': liga.id}) }}">Equipos</a>
+                    <a class="grisclaro col-lg-6 col-md-6 col-sm-6 col-xs-6" style="" href="{{ path('app_equipo_equipos',{'slug': liga.id}) }}">Localización</a>
             </div>
-            <div>
-    {% for equipo in liga.equipos %}
-            <h1>{{ equipo.nombre}}</h1>
-        {% endfor %}
-            </div>
-        </div>
-<!-- Entrenadores -->
-        <div class="cajaliga col-lg-3 col-lg-offset-1 col-md-3 col-sm-3 col-xs-3" style=" ">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="border-bottom:2px solid rgba(0, 0, 0, 0.3); ">
-                    <div class="grisclaro col-lg-3 col-md-1 col-sm-1 col-xs-1"  href="{{ path('app_liga_updateLiga',{'id': liga.id}) }}">Entrenadores</div>
+            <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 5px; ">
+                {% for equipo in liga.equipos %}
+                        <div class=" col-lg-6 col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 5px; "><a class="grisclaro" href="{{ path('app_equipo_showEquipo', {'slug': equipo.id}) }}">{{ equipo.nombre }}</a></div>
+                        <div class="grisclaro col-lg-6 col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 5px; ">{{ equipo.localizacion }}</div>
+                {% endfor %}
             </div>
         </div>
 
-        </div>
+
     </div>
 {% endblock %}
 

@@ -2,41 +2,60 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Jugador;
-use AppBundle\Form\JugadorType;
+use AppBundle\Entity\Entrenador;
+use AppBundle\Form\EntrenadorType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-class JugadorController extends Controller
+class EntrenadorController extends Controller
 {
+
     /**
-     * @Route("/{slug}.html", name="app_jugador_jugadores")
+     * @Route("/{slug}.html", name="app_entrenador_entrenador")
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexPlayerAction($slug)
+    public function indexEntrenadorAction($slug)
     {
         $m = $this->getDoctrine()->getManager();
         $repo=$m->getRepository('AppBundle:Equipo');
         $equipo = $repo->find($slug);
-        return $this->render(':jugador:jugador.html.twig',
+        return $this->render(':entrenador:entrenador.html.twig',
             [
                 'equipo'=> $equipo,
+
             ]
         );
     }
 
     /**
-     * @Route("/insertJugador/{id}", name="app_jugador_insertJugador")
+     * @Route("/allEntrenadores/{slug}.html", name="app_entrenador_entrenadores")
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function insertJugadorAction($id, Request $request)
+    public function indexAllEntrenadorAction($slug)
     {
-        $c = new Jugador();
+        $m = $this->getDoctrine()->getManager();
+        $repo=$m->getRepository('AppBundle:Liga');
+        $liga = $repo->find($slug);
+        return $this->render(':entrenador:entrenadores.html.twig',
+            [
+                'liga'=> $liga,
+
+            ]
+        );
+    }
+
+    /**
+     * @Route("/insertEntrenador/{id}", name="app_entrenador_insertEntrenador")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function insertEntrenadorAction($id, Request $request)
+    {
+        $c = new Entrenador();
         if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
             throw $this->createAccessDeniedException();
         }
-        $form = $this->createForm(JugadorType::class, $c);
+        $form = $this->createForm(EntrenadorType::class, $c);
         if ($request->getMethod() == Request::METHOD_POST) {
             $form->handleRequest($request);
             if ($form->isValid()) {
@@ -44,11 +63,6 @@ class JugadorController extends Controller
                 $repo = $m->getRepository('AppBundle:Equipo');
                 $equipo = $repo->find($id);
                 $user = $this->get('security.token_storage')->getToken()->getUser();
-                $creator= $equipo->getCreador().$id;
-                $current = $this->getUser().$id;
-                if (($current!=$creator)&&(!$this->get('security.authorization_checker')->isGranted('ROLE_SUPER_ADMIN'))) {
-                    throw $this->createAccessDeniedException();
-                }
                 $c->setCreador($user);
                 $c->setEquipo($equipo);
                 $m->persist($c);
@@ -56,80 +70,79 @@ class JugadorController extends Controller
                 return $this->redirectToRoute('app_equipo_showEquipo', ['slug' => $id]);
             }
         }
-        return $this->render(':jugador:form.html.twig', [
+        return $this->render(':entrenador:form.html.twig', [
             'form' => $form->createView(),
-            'action'=>  $this->generateUrl('app_jugador_insertJugador',['id' => $id])
+            'action'=>  $this->generateUrl('app_entrenador_insertEntrenador',['id' => $id])
 
         ]);
     }
 
     /**
-     * @Route("/removeJugador/{id}", name="app_jugador_removeJugador")
+     * @Route("/removeEntrenador/{id}", name="app_entrenador_removeEntrenador")
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function removeJugadorAction($id)
+    public function removeEntrenadorAction($id)
     {
         if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
             throw $this->createAccessDeniedException();
         }
         $m = $this->getDoctrine()->getManager();
-        $repo = $m->getRepository('AppBundle:Jugador');
-        $jugador = $repo->find($id);
-        $equipo = $jugador->getEquipo();
-        $equipoid = $equipo->getID();
-        $creator= $jugador->getCreador().$id;
+        $repo = $m->getRepository('AppBundle:Entrenador');
+        $entrenador = $repo->find($id);
+        $equipo = $entrenador->getEquipo();
+        $equipoid = $equipo->getId();
+        $creator= $entrenador->getCreador().$id;
         $current = $this->getUser().$id;
 
         if (($current!=$creator)&&(!$this->get('security.authorization_checker')->isGranted('ROLE_SUPER_ADMIN'))) {
             throw $this->createAccessDeniedException();
         }
-        $m->remove($jugador);
+        $m->remove($entrenador);
         $m->flush();
-        return $this->redirectToRoute('app_equipo_showEquipo',array('slug' => $equipoid));
+        return $this->redirectToRoute('app_equipo_showEquipo',['slug' => $equipoid]);
 
     }
 
 
     /**
-     * @Route("/updateJugador/{id}", name="app_jugador_updateJugador")
+     * @Route("/updateEntrenador/{id}", name="app_entrenador_updateEntrenador")
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function updateJugadorAction($id, Request $request)
+    public function updateEntrenadorAction($id, Request $request)
     {
         if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
             throw $this->createAccessDeniedException();
         }
 
         $m = $this->getDoctrine()->getManager();
-        $repo = $m->getRepository('AppBundle:Jugador');
-        $jugador=$repo->find($id);
-        $equipo = $jugador->getEquipo();
-        $equipoid = $equipo->getID();
-        $form = $this->createForm(JugadorType::class, $jugador);
+        $repo = $m->getRepository('AppBundle:Entrenador');
+        $entrenador=$repo->find($id);
+        $equipo = $entrenador->getEquipo();
+        $equipoid = $equipo->getId();
+        $form = $this->createForm(EntrenadorType::class, $entrenador);
         if ($request->getMethod() == Request::METHOD_POST) {
             $form->handleRequest($request);
             if ($form->isValid()) {
-                $m->persist($jugador);
+                $m->persist($entrenador);
                 $m->flush();
                 return $this->redirectToRoute('app_equipo_showEquipo', ['slug' => $equipoid]);
             }
         }
-        return $this->render(':jugador:form.html.twig', [
+        return $this->render(':entrenador:form.html.twig', [
             'form' => $form->createView(),
-            'action'=> $this->generateUrl('app_jugador_updateJugador',['id'=>$id]),
         ]);
     }
 
     /**
-     * @Route("detail/{slug}.html", name="app_jugador_showJugador")
+     * @Route("detail/{slug}.html", name="app_entrenador_showEntrenador")
      */
-    public function showJugadorAction($slug)
+    public function showEntrenadorAction($slug)
     {
         $m = $this->getDoctrine()->getManager();
-        $repository= $m->getRepository('AppBundle:Jugador');
-        $jugador=$repository->find($slug);
-        return $this->render(':jugador:jugador.html.twig', [
-            'jugador'   => $jugador,
+        $repository= $m->getRepository('AppBundle:Entrenador');
+        $entrenador=$repository->find($slug);
+        return $this->render(':entrenador:entrenador.html.twig', [
+            'entrenador'   => $entrenador,
         ]);
     }
 
