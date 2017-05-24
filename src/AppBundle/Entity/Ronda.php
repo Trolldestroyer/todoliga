@@ -49,6 +49,26 @@ class Ronda
      */
     private $createdAt;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Liga", inversedBy="liga")
+     */
+    private $liga;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Partido", mappedBy="ronda", cascade={"remove"})
+     */
+    private $partidos;
+    /**
+     * @ORM\ManyToOne(targetEntity="Trascastro\UserBundle\Entity\User", inversedBy="rondasCreadas")
+     */
+    private $creador;
+
+    public function __construct()
+    {
+
+        $this->createdAt = new \DateTime();
+        $this->updatedAt = $this->createdAt;
+    }
 
     /**
      * Get id
@@ -155,5 +175,55 @@ class Ronda
     {
         return $this->createdAt;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getLiga()
+    {
+        return $this->liga;
+    }
+
+    /**
+     * @param mixed $liga
+     */
+    public function setLiga($liga)
+    {
+        $this->liga = $liga;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCreador()
+    {
+        return $this->creador;
+    }
+
+    /**
+     * @param mixed $creador
+     */
+    public function setCreador($creador)
+    {
+        $this->creador = $creador;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPartidos()
+    {
+        return $this->partidos;
+    }
+
+    /**
+     * @param mixed $partidos
+     */
+    public function setPartidos($partidos)
+    {
+        $this->partidos = $partidos;
+    }
+
+
 }
 
