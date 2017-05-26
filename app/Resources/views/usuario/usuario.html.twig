@@ -23,7 +23,7 @@
         <h1 style="padding-top:30px;margin-bottom: 50px;">Ligas creadas por {{ usuario.username }}</h1>
         <div class="profile-body">
             {% for liga in usuario.ligasCreadas %}
-                <div class="col-sm-6 profile-body" style="">
+                <div class="col-sm-6 profile-body">
                     <div>
                         <h2><a class="color-dark" href="{{ path('app_liga_showLiga', {'slug': liga.id}) }}">👁 ️{{ liga.nombre }}</a></h2>
                     </div>
