@@ -12,11 +12,11 @@
                  <div class="cajaligas col-lg-offset-3 col-lg-8 col-md-offset-3 col-md-8 col-sm-8 col-xs-offset-3 col-xs-8">
                     {% if (app.user == liga.creador) or (app.user == "Albert") %}
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="border-bottom:2px solid rgba(0, 0, 0, 0.3); ">
-                            <div class="col-lg-2 col-lg-offset-10 col-md-12 col-sm-12 col-xs-12" >
-                                <div  class="col-lg-1 col-lg-offset-5 col-md-1 col-sm-1 col-xs-1">
+                            <div class="col-lg-2 col-lg-offset-10 col-md-2 col-md-offset-10 col-sm-3 col-sm-offset-9 col-xs-offset-3 col-xs-9" >
+                                <div  class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
                                     <a class="verde" href="{{ path('app_liga_updateLiga',{'id': liga.id}) }}">✏️️</a>
                                 </div>
-                                <div  class="col-lg-1 col-lg-offset-0 col-md-1 col-sm-1 col-xs-1">
+                                <div  class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
                                     <a class="verde" href="{{ path('app_liga_removeLiga',{'id': liga.id}) }}">✖️</a>
                                 </div>
                             </div>

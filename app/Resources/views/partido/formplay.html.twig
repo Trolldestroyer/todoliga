@@ -1,0 +1,22 @@
+{% extends '::base.html.twig' %}
+
+
+{% block body %}
+    <h1>Play</h1>
+    <div>
+        <form method="post" action="{{ action }}" novalidate="novalidate">
+            <div>
+                <ul>
+                    {% for error in form.vars.errors %}
+                        <li>{{ error.message }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div>{{ form_errors(form.primerResultado) }}{{ form_label(form.primerResultado) }}: {{ form_widget(form.primerResultado) }}</div>
+            <div>{{ form_errors(form.segundoResultado) }}{{ form_label(form.segundoResultado) }}: {{ form_widget(form.segundoResultado) }}</div>
+            {{ form_rest(form) }}
+            <div><input type="submit" value="Ok"></div>
+        </form>
+    </div>
+
+{% endblock %}

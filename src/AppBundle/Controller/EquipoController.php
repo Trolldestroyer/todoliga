@@ -108,15 +108,14 @@ class EquipoController extends Controller
         $m = $this->getDoctrine()->getManager();
         $repo = $m->getRepository('AppBundle:Equipo');
         $equipo=$repo->find($id);
-        $liga = $equipo->getLiga();
-        $ligaid = $liga->getId();
+        $equipoid = $equipo->getId();
         $form = $this->createForm(EquipoType::class, $equipo);
         if ($request->getMethod() == Request::METHOD_POST) {
             $form->handleRequest($request);
             if ($form->isValid()) {
                 $m->persist($equipo);
                 $m->flush();
-                return $this->redirectToRoute('app_equipo_equipos', ['slug' => $ligaid]);
+                return $this->redirectToRoute('app_equipo_showEquipo', ['slug' => $equipoid]);
             }
         }
         return $this->render(':equipo:form.html.twig', [
@@ -139,6 +138,95 @@ class EquipoController extends Controller
         ]);
     }
 
+    /**
+     * @Route("subir/{id}", name="app_equipo_ganarPunto")
+     */
+    public function ganarPuntoAction($id)
+        {
+            if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+                throw $this->createAccessDeniedException();
+            }
+            $m = $this->getDoctrine()->getManager();
+            $repo = $m->getRepository('AppBundle:Equipo');
+            $equipo = $repo->find($id);
+            $equipoid = $equipo->getId();
+            $ganar = $equipo->ganarPunto();
+            $creator= $equipo->getCreador().$id;
+            $current = $this->getUser().$id;
+            if (($current!=$creator)&&(!$this->get('security.authorization_checker')->isGranted('ROLE_SUPER_ADMIN'))) {
+                throw $this->createAccessDeniedException();
+            }
+            $m->persist($ganar);
+            $m->flush();
+            return $this->redirectToRoute('app_equipo_showEquipo', ['slug' => $equipoid]);
+        }
+    /**
+     * @Route("bajar/{id}", name="app_equipo_quitarPunto")
+     */
+    public function quitarPuntoAction($id)
+    {
+        if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            throw $this->createAccessDeniedException();
+        }
+        $m = $this->getDoctrine()->getManager();
+        $repo = $m->getRepository('AppBundle:Equipo');
+        $equipo = $repo->find($id);
+        $equipoid = $equipo->getId();
+        $ganar = $equipo->restarPunto();
+        $creator= $equipo->getCreador().$id;
+        $current = $this->getUser().$id;
+        if (($current!=$creator)&&(!$this->get('security.authorization_checker')->isGranted('ROLE_SUPER_ADMIN'))) {
+            throw $this->createAccessDeniedException();
+        }
+        $m->persist($ganar);
+        $m->flush();
+        return $this->redirectToRoute('app_equipo_showEquipo', ['slug' => $equipoid]);
+    }
+
+    /**
+     * @Route("subirTrofeos/{id}", name="app_equipo_ganarTrofeos")
+     */
+    public function ganarTrofeosAction($id)
+    {
+        if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            throw $this->createAccessDeniedException();
+        }
+        $m = $this->getDoctrine()->getManager();
+        $repo = $m->getRepository('AppBundle:Equipo');
+        $equipo = $repo->find($id);
+        $equipoid = $equipo->getId();
+        $ganar = $equipo->ganarTrofeos();
+        $creator= $equipo->getCreador().$id;
+        $current = $this->getUser().$id;
+        if (($current!=$creator)&&(!$this->get('security.authorization_checker')->isGranted('ROLE_SUPER_ADMIN'))) {
+            throw $this->createAccessDeniedException();
+        }
+        $m->persist($ganar);
+        $m->flush();
+        return $this->redirectToRoute('app_equipo_showEquipo', ['slug' => $equipoid]);
+    }
+    /**
+     * @Route("bajarTrofeos/{id}", name="app_equipo_quitarTrofeos")
+     */
+    public function quitarTrofeosAction($id)
+    {
+        if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            throw $this->createAccessDeniedException();
+        }
+        $m = $this->getDoctrine()->getManager();
+        $repo = $m->getRepository('AppBundle:Equipo');
+        $equipo = $repo->find($id);
+        $equipoid = $equipo->getId();
+        $ganar = $equipo->restarTrofeos();
+        $creator= $equipo->getCreador().$id;
+        $current = $this->getUser().$id;
+        if (($current!=$creator)&&(!$this->get('security.authorization_checker')->isGranted('ROLE_SUPER_ADMIN'))) {
+            throw $this->createAccessDeniedException();
+        }
+        $m->persist($ganar);
+        $m->flush();
+        return $this->redirectToRoute('app_equipo_showEquipo', ['slug' => $equipoid]);
+    }
     /**
      * @Route("/usuario/{slug}.html", name="app_usuario_show")
      *

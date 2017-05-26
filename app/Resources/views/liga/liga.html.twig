@@ -5,58 +5,51 @@
     <div class="fondoliga">
 
         <h1 class="ligas">Liga {{ liga.nombre }}</h1>
-
-        <div class="cajaliga col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10 col-sm-10 col-xs-offset-1 col-xs-10" style=" ">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="border-bottom:2px solid rgba(0, 0, 0, 0.3); ">
+<!-- Descripción de la liga -->
+        <div class="cajaliga col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10 col-sm-offset-1 col-sm-10 col-xs-10 col-xs-offset-1" style=" ">
             {% if (app.user == liga.creador) or (app.user == "Albert") %}
-                <div class="col-lg-2 col-lg-offset-10 col-md-12 col-sm-12 col-xs-12" >
-                    <div  class="col-lg-1 col-lg-offset-5 col-md-1 col-sm-1 col-xs-1">
-                        <a class="verde" href="{{ path('app_liga_updateLiga',{'id': liga.id}) }}">✏️️</a>
-                    </div>
-                    <div  class="col-lg-1 col-lg-offset-0 col-md-1 col-sm-1 col-xs-1">
-                        <a class="verde" href="{{ path('app_liga_removeLiga',{'id': liga.id}) }}">✖️</a>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style=" border-bottom:2px solid rgba(0, 0, 0, 0.3); ">
+                    <div style="" class="col-lg-2 col-lg-offset-10 col-md-2 col-md-offset-10 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0" >
+                            <a style="" class="verde col-lg-1 col-lg-offset-5 col-md-1 col-md-offset-4 col-sm-1 col-sm-offset-10 col-xs-1 col-xs-offset-7" href="{{ path('app_liga_updateLiga',{'id': liga.id}) }}">✏️️</a>
+                            <a style="" class="verde col-lg-1 col-lg-offset-0 col-md-1 col-sm-1 col-xs-1" href="col-lg-1 col-l{{ path('app_liga_removeLiga',{'id': liga.id}) }}">✖️</a>
                     </div>
                 </div>
             {%   endif %}
-            </div>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"  >
-                <div class="grisclaro col-lg-2 col-md-2 col-sm-2 col-xs-2" style=""><h4>Descripción:</h4> </div>
-                <div class="col-lg-10 col-md-8 col-sm-12 col-xs-12" style=" margin: 10px 0px 10px 0px; ">{{ liga.texto }}</div>
-                 {% if (app.user == liga.creador) or (app.user == "Albert") %}
-                    <div class="grisclaro col-lg-4 col-lg-offset-2 col-md-4 col-md-offset-2 col-sm-4 col-sm-offset-2 col-xs-4 col-xs-offset-2" style=" margin-top: 10px;">Creacion: {{ liga.createdAt|date("d/m/Y H:i:s") }}</div>
-                    <div class="grisclaro col-lg-6 col-md-6 col-sm-6 col-xs-6" style=" margin-top: 10px;">Última modificación: {{ liga.updatedAt|date("d/m/Y H:i:s") }}</div>
-                 {%   endif %}
-                <div class="grisclaro col-lg-2 col-lg-offset-10 col-md-2 col-md-offset-10 col-sm-2 col-sm-offset-10 col-xs-2 col-xs-offset-10">Creador: <a class="verde" href="{{ path('app_usuario_show', {'slug': liga.creador.id }) }}">{{ liga.creador }}</a></div>
+                <div class="grisclaro col-lg-2 col-md-2 col-sm-2 col-xs-12" style=""><h4>Descripción:</h4> </div>
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10" style=" margin: 10px 0px 10px 0px; ">{{ liga.texto }}</div>
+                <div class="grisclaro col-lg-2 col-lg-offset-10 col-md-2 col-md-offset-10 col-sm-2 col-sm-offset-10 col-xs-2 col-xs-offset-9">Creador: <a class="verde" href="{{ path('app_usuario_show', {'slug': liga.creador.id }) }}">{{ liga.creador }}</a></div>
             </div>
         </div>
-
+<!-- Final descripción de la liga -->
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-        <!-- Rondas -->
-    <div class="cajaliga col-lg-offset-1 col-lg-4 col-md-offset-1 col-md-3 col-sm-3 col-xs-offset-1 col-xs-3" style=" ">
+<!-- Rondas -->
+    <div class="cajaliga col-lg-offset-1 col-lg-4 col-md-offset-1 col-md-4 col-sm-4 col-xs-offset-1 col-xs-10" style=" ">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="border-bottom:2px solid rgba(0, 0, 0, 0.3); ">
             <a class="grisclaro col-lg-3 col-md-1 col-sm-1 col-xs-1"  href="{{ path('app_ronda_rondas',{'slug': liga.id}) }}">Rondas</a>
         </div>
-         <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 5px; ">
+        <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 5px; ">
                 {% for ronda in liga.rondas %}
                         <div class=" col-lg-6 col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 5px; "><a class="grisclaro" href="{{ path('app_ronda_showRonda', {'slug': ronda.id}) }}">{{ ronda.nombre }}</a></div>
                 {% endfor %}
-            </div>
+        </div>
     </div>
+<!-- Final Rondas -->
 <!-- Equipos-->
-        <div class="cajaliga col-lg-5 col-lg-offset-1 col-md-3 col-sm-3 col-xs-3" style=" ">
+        <div class="cajaliga col-lg-5 col-lg-offset-1 col-md-5 col-md-offset-1 col-sm-5 col-sm-offset-1 col-xs-offset-1 col-xs-10" style=" ">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 5px; border-bottom:2px solid rgba(0, 0, 0, 0.3); ">
                     <a class="grisclaro col-lg-6 col-md-6 col-sm-6 col-xs-6" style="" href="{{ path('app_equipo_equipos',{'slug': liga.id}) }}">Equipos</a>
                     <div class="grisclaro col-lg-6 col-md-6 col-sm-6 col-xs-6" style="">Localización</div>
             </div>
             <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 5px; ">
                 {% for equipo in liga.equipos %}
-                        <div class=" col-lg-6 col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 5px; "><a class="grisclaro" href="{{ path('app_equipo_showEquipo', {'slug': equipo.id}) }}">{{ equipo.nombre }}</a></div>
-                        <div class="grisclaro col-lg-6 col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 5px; ">{{ equipo.localizacion }}</div>
+                        <div class=" col-lg-6 col-md-5 col-sm-5 col-xs-4" style="margin-bottom: 5px; "><a class="grisclaro" href="{{ path('app_equipo_showEquipo', {'slug': equipo.id}) }}">{{ equipo.nombre }}</a></div>
+                        <div class="grisclaro col-lg-6 col-md-7 col-sm-7 col-xs-8" style="margin-bottom: 5px; ">{{ equipo.localizacion }}</div>
                 {% endfor %}
             </div>
         </div>
-
+<!-- Final equipos-->
 
     </div>
 {% endblock %}

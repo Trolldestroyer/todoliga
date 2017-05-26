@@ -8,14 +8,13 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Image;
 use AppBundle\Entity\Partido;
-use AppBundle\Form\ImageType;
 use AppBundle\Form\PartidoType;
 use AppBundle\Form\PlayType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+
 class PartidoController extends Controller
 {
 
@@ -124,6 +123,48 @@ class PartidoController extends Controller
 
         ]);
     }
+
+    /**
+     * @Route("/jugarPartido/{id}", name="app_partido_jugarPartido")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function jugarPartidoAction($id, Request $request)
+    {
+        if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            throw $this->createAccessDeniedException();
+        }
+        $m = $this->getDoctrine()->getManager();
+        $repo = $m->getRepository('AppBundle:Partido');
+        $partido=$repo->find($id);
+        $ronda = $partido->getRonda();
+        $rondaid = $ronda->getID();
+        $form = $this->createForm(PlayType::class, $partido);
+        if ($request->getMethod() == Request::METHOD_POST) {
+            $form->handleRequest($request);
+            if ($form->isValid()) {
+                $firstTeam= $partido->getPrimerEquipo();
+                $secondTeam= $partido->getSegundoEquipo();
+                $firstresult=$partido->getPrimerResultado();
+                $secondresult=$partido->getSegundoResultado();
+
+                if($firstresult>$secondresult){
+                    $partido->setGanador($firstTeam);
+                }elseif($firstresult<$secondresult){
+                    $partido->setGanador($secondTeam);
+                }else{
+                    $partido->setGanador("Empate");}
+
+                $m->persist($partido);
+                $m->flush();
+                return $this->redirectToRoute('app_ronda_showRonda', ['slug' => $rondaid]);
+            }
+        }
+        return $this->render(':partido:formplay.html.twig', [
+            'form' => $form->createView(),
+            'action'=>  $this->generateUrl('app_partido_jugarPartido',['id' => $id])
+        ]);
+    }
+
     /**
      * @Route("showPartido/{slug}.html", name="app_partido_showPartido")
      */
@@ -136,45 +177,8 @@ class PartidoController extends Controller
             'partido'   => $partido,
         ]);
     }
-//app_partido_play
 
-    /**
-     * @Route("/plaYPartido/{id}", name="app_partido_play")
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function playAction($id, Request $request)
-    {
-        if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
-            throw $this->createAccessDeniedException();
-        }
 
-        $m = $this->getDoctrine()->getManager();
-        $repo = $m->getRepository('AppBundle:Partido');
-        $partido=$repo->find($id);
-        $equipo = $partido->getRonda();
-        $equipoid = $equipo->getID();
-        $form = $this->createForm(PlayType::class, $partido);
-        if ($request->getMethod() == Request::METHOD_POST) {
-            $form->handleRequest($request);
-            if ($form->isValid()) {
-                $firstTeam= $partido->getFirstTeam();
-                $secondTeam= $partido->getSecondTeam();
-                $firstresult=$partido->getFirstResult();
-                $secondresult=$partido->getSecondResult();
-                if($firstresult<$secondresult){$partido->setWinner($firstTeam);
-                }elseif($secondresult<$firstresult){$partido->setWinner($secondTeam);
-                }else{$partido->setWinner("");}
-                $m->persist($partido);
-                $m->flush();
-                return $this->redirectToRoute('app_partidos_index', ['slug' => $equipoid]);
-            }
-        }
-        return $this->render(':partido:formplay.html.twig', [
-            'form' => $form->createView(),
-            'action'=>  $this->generateUrl('app_partido_play',['id' => $id])
-
-        ]);
-    }
 
 
 }

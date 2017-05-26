@@ -220,6 +220,38 @@ class Equipo
         return $this;
     }
 
+
+    public function ganarPunto()
+    {
+        $this->puntos += 1;
+
+            return $this;
+    }
+
+    public function restarPunto()
+    {
+        if($this->puntos !==  0){
+            $this->puntos = $this->puntos -1;
+        }
+
+        return $this;
+    }
+
+    public function ganarTrofeos()
+    {
+        $this->trofeos += 1;
+
+        return $this;
+    }
+
+    public function restarTrofeos()
+    {
+        if($this->trofeos !==  0){
+            $this->trofeos = $this->trofeos -1;
+        }
+
+        return $this;
+    }
     /**
      * Get puntos
      *
