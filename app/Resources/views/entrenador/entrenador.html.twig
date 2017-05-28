@@ -2,11 +2,11 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
-
     <div class="fondoliga ">
 
-        <h1 class="ligas ">Entrenador {{ entrenador.nombre }} {{ entrenador.apellidos }} del {{ entrenador.equipo.nombre }}</h1>
-        <div class="cajajugador col-lg-offset-1 col-lg-3 col-md-offset-1 col-md-3 col-sm-3 hidden-xs" style=" ">
+        <h1 class="ligas">Entrenador {{ entrenador.nombre }} {{ entrenador.apellidos }} del {{ entrenador.equipo.nombre }}</h1>
+
+        <div class="cajajugador col-lg-offset-1 col-lg-3 col-md-offset-1 col-md-3 col-sm-4 col-sm-offset-1 hidden-xs" style=" ">
             <div class="userDefault col-xs-12 col-sm-12 col-lg-12 "></div>
         </div>
         <!-- Texto y edicion basica-->
@@ -24,10 +24,10 @@
                 </div>
             {%   endif %}
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"  >
-                <div class="grisclaro detalleJugador col-lg-6 col-md-6 col-sm-6 col-xs-12" style="  "><b style="color:white;">Nombre: </b>{{ entrenador.nombre }}</div>
-                <div class="grisclaro detalleJugador col-lg-6 col-md-6 col-sm-6 col-xs-12" style=" "><b style="color:white;">Email: </b>{{ entrenador.email }}</div>
-                <div class="grisclaro detalleJugador col-lg-6 col-md-5 col-sm-6 col-xs-12" style=" "><b style="color:white;">Apellidos: </b>{{ entrenador.apellidos }}</div>
-                <div class="grisclaro detalleJugador col-lg-6 col-md-6 col-sm-6 col-xs-12" style="  "><b style="color:white;">Descripción: </b>{{ entrenador.texto }}</div>
+                <div class="grisclaro detalleJugador col-lg-6 col-md-6 col-sm-12 col-xs-12" style="  "><b style="color:white;">Nombre: </b>{{ entrenador.nombre }}</div>
+                <div class="grisclaro detalleJugador col-lg-6 col-md-6 col-sm-12 col-xs-12" style=" "><b style="color:white;">Email: </b>{{ entrenador.email }}</div>
+                <div class="grisclaro detalleJugador col-lg-12 col-md-12 col-sm-12 col-xs-12" style=" "><b style="color:white;">Apellidos: </b>{{ entrenador.apellidos }}</div>
+                <div class="grisclaro detalleJugador col-lg-12 col-md-12 col-sm-12 col-xs-12" style="  "><b style="color:white;">Descripción: </b>{{ entrenador.texto }}</div>
                 <div class="grisclaro detalleJugador col-lg-6 col-md-6 col-sm-6 col-xs-12" style="  "><b style="color:white;">Equipo: </b><a class="verde" href="{{ path('app_equipo_showEquipo', {'slug': entrenador.equipo.id}) }}">{{ entrenador.equipo.nombre }}</a></div>
                 {% if (app.user == entrenador.creador) or (app.user == "Albert") %}
                     <div class="grisclaro detalleJugador col-lg-6 col-md-6 col-sm-6 col-xs-12" style="  "><b style="color:white;">Creado: </b>{{ entrenador.createdAt|date("d/m/Y") }}</div>

@@ -20,6 +20,7 @@ class Equipo
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     *
      */
     private $id;
 
@@ -99,6 +100,7 @@ class Equipo
         $this->jugadores= new ArrayCollection();
         $this->createdAt = new \DateTime();
         $this->updatedAt = $this->createdAt;
+
     }
     /**
      * Get id

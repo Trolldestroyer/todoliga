@@ -147,5 +147,48 @@ class JugadorController extends Controller
         ]);
     }
 
-
+    /**
+     * @Route("subir/{id}", name="app_jugador_ganarPunto")
+     */
+    public function ganarPuntoAction($id)
+    {
+        if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            throw $this->createAccessDeniedException();
+        }
+        $m = $this->getDoctrine()->getManager();
+        $repo = $m->getRepository('AppBundle:Jugador');
+        $jugador = $repo->find($id);
+        $jugadorid = $jugador->getId();
+        $ganar = $jugador->ganarPunto();
+        $creator= $jugador->getCreador().$id;
+        $current = $this->getUser().$id;
+        if (($current!=$creator)&&(!$this->get('security.authorization_checker')->isGranted('ROLE_SUPER_ADMIN'))) {
+            throw $this->createAccessDeniedException();
+        }
+        $m->persist($ganar);
+        $m->flush();
+        return $this->redirectToRoute('app_jugador_showJugador', ['slug' => $jugadorid]);
+    }
+    /**
+     * @Route("bajar/{id}", name="app_jugador_quitarPunto")
+     */
+    public function quitarPuntoAction($id)
+    {
+        if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            throw $this->createAccessDeniedException();
+        }
+        $m = $this->getDoctrine()->getManager();
+        $repo = $m->getRepository('AppBundle:Jugador');
+        $jugador = $repo->find($id);
+        $jugadorid = $jugador->getId();
+        $ganar = $jugador->restarPunto();
+        $creator= $jugador->getCreador().$id;
+        $current = $this->getUser().$id;
+        if (($current!=$creator)&&(!$this->get('security.authorization_checker')->isGranted('ROLE_SUPER_ADMIN'))) {
+            throw $this->createAccessDeniedException();
+        }
+        $m->persist($ganar);
+        $m->flush();
+        return $this->redirectToRoute('app_jugador_showJugador', ['slug' => $jugadorid]);
+    }
 }

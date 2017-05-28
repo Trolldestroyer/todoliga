@@ -199,7 +199,7 @@ img#logo{
 	-moz-box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
 	box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
 	border: 2px solid rgba(171, 178, 185, 0.4);
-
+	background-color: rgba(48, 55, 59,0.9)!important;
 }
 
 .fondoliga {
@@ -213,9 +213,10 @@ img#logo{
 	-moz-box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
 	box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
 	border: 2px solid rgba(171, 178, 185, 0.4);
+	background-color: rgba(48, 55, 59,0.9)!important;
+
 
 }
-
 
 .fondoequipos {
 	height: 650px!important;
@@ -228,18 +229,77 @@ img#logo{
 	-moz-box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
 	box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
 	border: 2px solid rgba(171, 178, 185, 0.4);
+	background-color: rgba(48, 55, 59,0.9)!important;
 
 }
+
+.fondoequipo {
+	height: 1500px!important;
+	background-image: url('../images/img6.jpg');
+	background-size: 100%;
+	background-repeat:  no-repeat;
+	background-attachment: fixed;
+	margin-top: 10px;
+	-webkit-box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
+	-moz-box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
+	box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
+	border: 2px solid rgba(171, 178, 185, 0.4);
+	background-color: rgba(48, 55, 59,0.9)!important;
+
+
+
+}
+
+.fondoronda {
+	height: 1050px!important;
+	background-image: url('../images/img2.jpg');
+	background-size: 100%;
+	background-repeat:  no-repeat;
+	background-attachment: fixed;
+	margin-top: 10px;
+	-webkit-box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
+	-moz-box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
+	box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
+	border: 2px solid rgba(171, 178, 185, 0.4);
+
+}
+
+.fondopartido {
+    height: 650px!important;
+    background-image: url('../images/img10.jpg');
+    background-size: 100%;
+    background-repeat:  no-repeat;
+    background-attachment: fixed;
+    margin-top: 10px;
+    -webkit-box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
+    -moz-box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
+    box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
+    border: 2px solid rgba(171, 178, 185, 0.4);
+
+}
+
 .cajaligas{
 	padding-bottom: 8px;
 	margin-bottom: 1%;
 	background-color: rgba(86, 101, 115, 0.9);
 	border: 2px solid rgba(0, 0, 0, 0.3);
 	border-radius: 10px;
-	/*background-color: #363636;*/
 	-webkit-box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
 	-moz-box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
 	box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
+}
+
+.cajapartidos{
+	padding-bottom: 8px;
+	margin-bottom: 1%;
+	background-color: rgba(86, 101, 115, 0.9);
+	border: 2px solid rgba(0, 0, 0, 0.3);
+	border-radius: 10px;
+	-webkit-box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
+	-moz-box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
+	box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
+	min-height: 200px;
+
 }
 
 .cajaliga{
@@ -248,12 +308,21 @@ img#logo{
 	background-color: rgba(86, 101, 115, 0.9);
 	border: 2px solid rgba(0, 0, 0, 0.3);
 	border-radius: 10px;
-	/*background-color: #363636;*/
 	-webkit-box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
 	-moz-box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
 	box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
 }
 
+.cajaequipos{
+	padding-bottom: 8px;
+	margin-bottom: 1%;
+	background-color: rgba(86, 101, 115, 0.9);
+	border: 2px solid rgba(0, 0, 0, 0.3);
+	border-radius: 10px;
+	-webkit-box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
+	-moz-box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
+	box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
+}
 
 .cajaequipo{
 	padding-bottom: 8px;
@@ -261,10 +330,20 @@ img#logo{
 	background-color: #E5EF4A;
 	border: 2px solid rgba(0, 0, 0, 0.3);
 	border-radius: 10px;
-	/*background-color: #363636;*/
 	-webkit-box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
 	-moz-box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
 	box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);"
+}
+
+.cajajugadores{
+	padding-bottom: 8px;
+	margin-bottom: 1%;
+	background-color: rgba(86, 101, 115, 0.9);
+	border: 2px solid rgba(0, 0, 0, 0.3);
+	border-radius: 10px;
+	-webkit-box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
+	-moz-box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
+	box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
 }
 
 .cajajugador{
@@ -273,10 +352,10 @@ img#logo{
 	background-color: rgba(86, 101, 115, 0.9);
 	border: 2px solid rgba(0, 0, 0, 0.3);
 	border-radius: 10px;
-	height: 40%!important;
 	-webkit-box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
 	-moz-box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
 	box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
+    height: 250px;
 }
 
 #milk {
@@ -327,10 +406,11 @@ ul .botonMenuInterior{
 
 .grisclaro{
 	color:#EDEFF1;
+	text-decoration: none!important;
 }
 
 .userDefault{
-	height: 100%;
+	height: 100%!important;
 	background-size: 100%!important;
 	background-image: url('../images/user.png');
 	background-repeat:  no-repeat;

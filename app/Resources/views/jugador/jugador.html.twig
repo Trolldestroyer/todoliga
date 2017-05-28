@@ -6,7 +6,7 @@
 
         <h1 class="ligas ">Jugador {{ jugador.nombre }} {{ jugador.apellidos }} #{{ jugador.numero }}</h1>
 
-        <div class="cajajugador col-lg-offset-1 col-lg-3 col-md-offset-1 col-md-3 col-sm-3 col-xs-offset-1 col-xs-10" style=" ">
+        <div class="cajajugador col-lg-offset-1 col-lg-3 col-md-offset-1 col-md-3 col-sm-4 col-sm-offset-1 hidden-xs" style=" ">
             <div class="userDefault col-xs-12 col-sm-12 col-lg-12 "></div>
         </div>
         <!-- Texto y edicion basica-->
@@ -22,15 +22,21 @@
                 </div>
             {%   endif %}
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"  >
-                <div class="grisclaro detalleJugador col-lg-6 col-md-6 col-sm-6 col-xs-12" style="  "><b style="color:white;">Nombre: </b>{{ jugador.nombre }}</div>
-                <div class="grisclaro detalleJugador col-lg-6 col-md-6 col-sm-6 col-xs-12" style=" "><b style="color:white;">Numero: </b>{{ jugador.numero }}</div>
+                <div class="grisclaro detalleJugador col-lg-6 col-md-6 col-sm-6 col-xs-6" style="  "><b style="color:white;">Nombre: </b>{{ jugador.nombre }}</div>
+                <div class="grisclaro detalleJugador col-lg-6 col-md-6 col-sm-6 col-xs-6" style=" "><b style="color:white;">Numero: </b>{{ jugador.numero }}</div>
                 <div class="grisclaro detalleJugador col-lg-6 col-md-5 col-sm-6 col-xs-12" style=" "><b style="color:white;">Apellidos: </b>{{ jugador.apellidos }}</div>
-                <div class="grisclaro detalleJugador col-lg-6 col-md-6 col-sm-6 col-xs-12" style="  "><b style="color:white;">Posicion: </b>{{ jugador.posicion }}</div>
-                <div class="grisclaro detalleJugador col-lg-6 col-md-6 col-sm-6 col-xs-12" style="  "><b style="color:white;">Puntos: </b>{{ jugador.puntos }}</div>
-                <div class="grisclaro detalleJugador col-lg-6 col-md-6 col-sm-6 col-xs-12" style="  "><b style="color:white;">Equipo: </b><a class="verde" href="{{ path('app_equipo_showEquipo', {'slug': jugador.equipo.id}) }}">{{ jugador.equipo.nombre }}</a></div>
+                <div class="grisclaro detalleJugador col-lg-6 col-md-6 col-sm-6 col-xs-6" style="  "><b style="color:white;">Posicion: </b>{{ jugador.posicion }}</div>
+                <div class="grisclaro detalleJugador col-lg-6 col-md-6 col-sm-6 col-xs-6" style="  "><b style="color:white;">Puntos: </b>{{ jugador.puntos }}</div>
                 {% if (app.user == jugador.creador) or (app.user == "Albert") %}
-                    <div class="grisclaro detalleJugador col-lg-6 col-md-6 col-sm-6 col-xs-12" style="  "><b style="color:white;">Creado: </b>{{ jugador.createdAt|date("d/m/Y") }}</div>
-                    <div class="grisclaro detalleJugador col-lg-6 col-md-6 col-sm-6 col-xs-12" style="  "><b style="color:white;">Autor: </b><a class="verde" href="{{ path('app_usuario_show', {'slug': jugador.creador.id }) }}">{{ jugador.creador }}</a></div>
+                    <div style="" class=" col-lg-5 col-md-2 col-sm-2 col-xs-4">
+                        <a class="verde" href="{{ path('app_jugador_ganarPunto',{'id': jugador.id}) }}">➕</a>
+                        <a class="verde"  href="{{ path('app_jugador_quitarPunto',{'id': jugador.id}) }}">➖</a>
+                    </div>
+                {%   endif %}
+                <div class="grisclaro detalleJugador col-lg-12 col-md-6 col-sm-6 col-xs-12" style="  "><b style="color:white;">Equipo: </b><a class="verde" href="{{ path('app_equipo_showEquipo', {'slug': jugador.equipo.id}) }}">{{ jugador.equipo.nombre }}</a></div>
+                {% if (app.user == jugador.creador) or (app.user == "Albert") %}
+                    <div class="grisclaro detalleJugador col-lg-6 col-md-6 col-sm-6 col-xs-6" style="  "><b style="color:white;">Creado: </b>{{ jugador.createdAt|date("d/m/Y") }}</div>
+                    <div class="grisclaro detalleJugador col-lg-6 col-md-6 col-sm-6 col-xs-6" style="  "><b style="color:white;">Autor: </b><a class="verde" href="{{ path('app_usuario_show', {'slug': jugador.creador.id }) }}">{{ jugador.creador }}</a></div>
                 {% endif %}
             </div>
         </div>

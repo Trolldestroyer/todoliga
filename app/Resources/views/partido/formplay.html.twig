@@ -2,20 +2,24 @@
 
 
 {% block body %}
-    <h1>Play</h1>
-    <div>
+    <div class="fondoliga2">
+
+    <h1 class="ligas">Resultados del Partido</h1>
+
+    <div class="cajaliga col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10 col-sm-10 col-xs-offset-1 col-xs-10" style=" ">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style=" ">
         <form method="post" action="{{ action }}" novalidate="novalidate">
-            <div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" >
                 <ul>
                     {% for error in form.vars.errors %}
                         <li>{{ error.message }}</li>
                     {% endfor %}
                 </ul>
             </div>
-            <div>{{ form_errors(form.primerResultado) }}{{ form_label(form.primerResultado) }}: {{ form_widget(form.primerResultado) }}</div>
-            <div>{{ form_errors(form.segundoResultado) }}{{ form_label(form.segundoResultado) }}: {{ form_widget(form.segundoResultado) }}</div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 5px;">{{ form_errors(form.primerResultado) }}{{ form_label(form.primerResultado) }}: {{ form_widget(form.primerResultado) }}</div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 5px;">{{ form_errors(form.segundoResultado) }}{{ form_label(form.segundoResultado) }}: {{ form_widget(form.segundoResultado) }}</div>
             {{ form_rest(form) }}
-            <div><input type="submit" value="Ok"></div>
+            <div><input class=" col-lg-offset-10 col-lg-2 col-md-offset-10 col-sm-offset-10 col-md-2 col-sm-2 col-xs-offset-1 col-xs-10 btn-success" style="margin-bottom: 5px" type="submit" value="Ok"></div>        </form>
         </form>
     </div>
 

@@ -14,7 +14,7 @@ class LigaController extends Controller
      * @Route("/", name="app_liga_ligas")
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
             throw $this->createAccessDeniedException();
@@ -22,9 +22,19 @@ class LigaController extends Controller
         $m = $this->getDoctrine()->getManager();
         $repo=$m->getRepository('AppBundle:Liga');
         $ligas = $repo->findAll();
+
+        $paginator = $this->get('knp_paginator');
+        $result = $paginator->paginate(
+            $ligas,
+            $request->query->getInt('page', 1),
+            Liga::PAGINATION_ITEMS,
+            [
+                'wrap-queries' => true, // https://github.com/KnpLabs/knp-components/blob/master/doc/pager/config.md
+            ]
+        );
         return $this->render(':liga:ligas.html.twig',
             [
-                'ligas'=> $ligas,
+                'ligas'=> $result,
             ]
         );
     }

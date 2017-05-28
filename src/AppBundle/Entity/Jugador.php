@@ -297,6 +297,20 @@ class Jugador
         $this->equipo = $equipo;
     }
 
+    public function ganarPunto()
+    {
+        $this->puntos += 1;
 
+        return $this;
+    }
+
+    public function restarPunto()
+    {
+        if($this->puntos !==  0){
+            $this->puntos = $this->puntos -1;
+        }
+
+        return $this;
+    }
 }
 

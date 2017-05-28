@@ -14,6 +14,12 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Liga
 {
+
+    /**
+     * it rarely changes, so better define it as a constant than a parameter under parameters.yml
+     */
+    const PAGINATION_ITEMS = 4;
+
     /**
      * @var int
      *

@@ -106,7 +106,7 @@ class Partido
 
         $this->primerResultado = 0;
         $this->segundoResultado = 0;
-        $this->ganador = "";
+        $this->ganador ="";
         $this->createdAt = new \DateTime();
         $this->updatedAt = $this->createdAt;
     }

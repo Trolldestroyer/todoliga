@@ -12,17 +12,18 @@ use Symfony\Component\HttpFoundation\Request;
 class EquipoController extends Controller
 {
     /**
-     * @Route("/{slug}.html", name="app_equipo_equipos")
+     * @Route("/{id}", name="app_equipo_equipos")
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction($slug)
+    public function indexAction($id, Request $request)
     {
         if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
             throw $this->createAccessDeniedException();
         }
         $m = $this->getDoctrine()->getManager();
         $repo=$m->getRepository('AppBundle:Liga');
-        $liga = $repo->find($slug);
+        $liga = $repo->find($id);
+
         return $this->render(':equipo:equipos.html.twig',
             [
                 'liga'=> $liga,

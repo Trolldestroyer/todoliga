@@ -61,7 +61,7 @@ class RondaController extends Controller
                 $c->setLiga($liga);
                 $m->persist($c);
                 $m->flush();
-                return $this->redirectToRoute('app_ronda_ronda', ['slug' => $id]);
+                return $this->redirectToRoute('app_ronda_rondas', ['slug' => $id]);
             }
         }
         return $this->render(':ronda:form.html.twig', [
