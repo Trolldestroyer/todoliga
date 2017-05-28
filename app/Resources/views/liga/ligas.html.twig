@@ -51,3 +51,8 @@
 
 {% endblock %}
 
+    {% block sidebar %}
+        <form action="{{ path('app_liga_buscar') }}" method="post">
+            <input type="text" name="busqueda" placeholder="Busqueda de ligas...">
+        </form>
+    {% endblock %}

@@ -1,0 +1,11 @@
+{% extends '::base.html.twig' %}
+
+
+{% block body %}
+
+    {% for Liga in bligas %}
+        {{ include('busqueda/indiceLiga.html.twig', { 'Liga': Liga }) }}
+
+    {% endfor %}
+
+{% endblock %}

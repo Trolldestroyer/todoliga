@@ -179,32 +179,61 @@ class LigaController extends Controller
         );
     }
 
-    /**
-     * @Route("/{slug}.html", name="app_liga_showLiga")
-     */
-    public function showLigaAction($slug)
-    {
-        $m = $this->getDoctrine()->getManager();
-        $repository= $m->getRepository('AppBundle:Liga');
-        $liga=$repository->find($slug);
-        return $this->render(':liga:liga.html.twig', [
-            'liga'   => $liga,
-        ]);
-    }
 
-    /**
-     * @Route("/usuario/{slug}.html", name="app_usuario_show")
-     *
-     */
-    public function showUserAction($slug)
-    {
-        $m = $this ->getDoctrine()->getManager();
-        $repository= $m->getRepository('UserBundle:User');
-        $usuario=$repository->find($slug);
-        return $this->render('usuario/usuario.html.twig',[
-            'usuario' => $usuario,
-        ]);
-    }
+//////////////////////VerLiga////////////////////////////////////////
+    /**                                                            //
+     * @Route("/{slug}.html", name="app_liga_showLiga")            //
+     */                                                            //
+    public function showLigaAction($slug)                          //
+    {                                                              //
+        $m = $this->getDoctrine()->getManager();                   //
+        $repository= $m->getRepository('AppBundle:Liga');          //
+        $liga=$repository->find($slug);                            //
+        return $this->render(':liga:liga.html.twig', [             //
+            'liga'   => $liga,                                     //
+        ]);                                                        //
+    }                                                              //
+/////////////////////////////////////////////////////////////////////
 
+//////////////////////VerCreador/////////////////////////////////////
+    /**                                                            //
+     * @Route("/usuario/{slug}.html", name="app_usuario_show")     //
+     *                                                             //
+     */                                                            //
+    public function showUserAction($slug)                          //
+    {                                                              //
+        $m = $this ->getDoctrine()->getManager();                  //
+        $repository= $m->getRepository('UserBundle:User');         //
+        $usuario=$repository->find($slug);                         //
+        return $this->render('usuario/usuario.html.twig',[         //
+            'usuario' => $usuario,                                 //
+        ]);                                                        //
+    }                                                              //
+/////////////////////////////////////////////////////////////////////
 
+///////////////////////////Buscador/////////////////////////////////////////////////////////////////
+    /**                                                                                           //
+     * @Route("/buscarLiga", name="app_liga_buscar")                                              //
+     * @return \Symfony\Component\HttpFoundation\Response                                         //
+     */                                                                                           //
+    public function searchAction(Request $request)                                                //
+    {                                                                                             //
+        $busqueda = $_POST['busqueda'];                                                           //
+        return $this->redirectToRoute('app_textoTitulo_show', ['palabra' => $busqueda]);          //
+    }                                                                                             //
+    /**                                                                                           //
+     * @Route("/busquedaPorTitulo/{palabra}", name="app_textoTitulo_show")                        //
+     * @return \Symfony\Component\HttpFoundation\Response                                         //
+     */                                                                                           //
+    public function textoPalabraAction($palabra, Request $request)                                //
+    {                                                                                             //
+        $em = $this->getDoctrine()->getManager();                                                 //
+        $bligas =$em->getRepository('AppBundle:Liga')->buscarTitulo($palabra);                    //
+        return $this->render(':busqueda:busquedaLiga.html.twig',                                      //
+            [                                                                                     //
+                'bligas' => $bligas,                                                              //
+            ]                                                                                     //
+        );                                                                                        //
+    }                                                                                             //
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 }

@@ -50,7 +50,12 @@
 {% endblock %}
 
 {% block menu %}
+    {% if (app.user == ronda.creador) or (app.user == "Albert") %}
+        <div style="margin-top: 10px; color: white; text-align: center;" >
+            <a style=""  class=" botonMenuInterior col-xs-12 col-sm-12 col-lg-12" href="{{ path('app_partido_insertPartido', {'id': ronda.id}) }}">Añadir Partido</a>
+        </div>
+    {% endif %}
     <div style="margin-top: 10px; color: white; text-align: center;" >
-        <a style=""  class=" botonMenuInterior col-xs-12 col-sm-12 col-lg-12" href="{{ path('app_partido_insertPartido', {'id': ronda.id}) }}">Añadir Partido</a>
+        <a class=" botonMenuInterior col-xs-12 col-sm-12 col-lg-12"  href="{{ path('app_liga_showLiga',{'slug': ronda.liga.id}) }}"> ↪️️ Volver</a>
     </div>
 {% endblock %}

@@ -10,4 +10,9 @@ namespace AppBundle\Repository;
  */
 class LigaRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function buscarTitulo($palabra) {
+        return $this->getEntityManager()
+            ->createQuery("SELECT liga from AppBundle:Liga liga 
+                      WHERE liga.nombre LIKE :palabra")->setParameter('palabra', '%'. $palabra. '%')->getResult();
+    }
 }

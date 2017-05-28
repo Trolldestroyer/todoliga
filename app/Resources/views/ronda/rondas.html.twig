@@ -37,5 +37,7 @@
         <a style=""  class=" botonMenuInterior col-xs-12 col-sm-12 col-lg-12" href="{{ path('app_ronda_insertRonda', {'id': liga.id}) }}">Añadir Ronda</a>
     </div>
     {%   endif %}
-
+    <div style="margin-top: 10px; color: white; text-align: center;" >
+        <a class=" botonMenuInterior col-xs-12 col-sm-12 col-lg-12"  href="{{ path('app_liga_showLiga',{'slug': liga.id}) }}"> ↪️️ Volver</a>
+    </div>
 {% endblock %}

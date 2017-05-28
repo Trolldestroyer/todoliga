@@ -19,7 +19,7 @@
                 <div class="grisclaro col-lg-6 col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 1%;  "><b style="color:white;">El equipo: </b>{{ partido.primerEquipo }} <b>con </b>{{ partido.primerResultado}}<b> puntos.</b></div>
                 <div class="grisclaro col-lg-6 col-md-12 col-sm-12 col-xs-12" style=" margin-bottom: 1%; "><b style="color:white;">El equipo: </b>{{ partido.segundoEquipo }} <b>con </b>{{ partido.segundoResultado }}<b> puntos.</b></div>
                 <div class="grisclaro col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 1%;  "><b style="color:white;">Fecha del encuentro: </b>{{ partido.fechaencuentro|date("d/m/Y") }}</div>
-                <div class="grisclaro col-lg-12 col-md-12 col-sm-12 col-xs-12" style=" margin-bottom: 1%; "><b style="color:white;">Nombre de la Ronda: </b>{{ partido.ronda.nombre }}</div>
+                <div class="grisclaro col-lg-12 col-md-12 col-sm-12 col-xs-12" style=" margin-bottom: 1%; "><b style="color:white;">Nombre de la Ronda: </b><a class="verde" href="{{ path('app_ronda_showRonda', {'slug': partido.ronda.id}) }}">{{ partido.ronda.nombre }}</a></div>
                 {% if ( partido.ganador =="empate") or (partido.ganador == partido.primerEquipo) or (partido.ganador == partido.segundoEquipo) %}
                     <div class="grisclaro detalleJugador col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 1%;  "><b style="color:white;">El ganador és: </b>{{ partido.ganador }}</div>
                 {% endif %}
@@ -34,4 +34,10 @@
     </div>
 
 
+{% endblock %}
+
+{% block menu %}
+    <div style="margin-top: 10px; color: white; text-align: center;" >
+        <a class=" botonMenuInterior col-xs-12 col-sm-12 col-lg-12"  href="{{ path('app_ronda_showRonda', {'slug': partido.ronda.id}) }}"> ↪️️ Volver</a>
+    </div>
 {% endblock %}

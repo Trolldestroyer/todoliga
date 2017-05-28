@@ -45,3 +45,8 @@
 
 {% endblock %}
 
+{% block menu %}
+    <div style="margin-top: 10px; color: white; text-align: center;" >
+        <a class=" botonMenuInterior col-xs-12 col-sm-12 col-lg-12"  href="{{ path('app_equipo_showEquipo', {'slug': jugador.equipo.id}) }}"> ↪️️ Volver</a>
+    </div>
+{% endblock %}
