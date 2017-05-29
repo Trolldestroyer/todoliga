@@ -4,7 +4,7 @@
 
 {% block fos_user_content %}
 {% if error %}
-    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    <div style="color: orangered;"><b>{{ error.messageKey|trans(error.messageData, 'security') }}</b></div>
 {% endif %}
 
 <form action="{{ path("fos_user_security_check") }}" method="post" >

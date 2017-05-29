@@ -219,17 +219,17 @@ class LigaController extends Controller
     public function searchAction(Request $request)                                                //
     {                                                                                             //
         $busqueda = $_POST['busqueda'];                                                           //
-        return $this->redirectToRoute('app_textoTitulo_show', ['palabra' => $busqueda]);          //
+        return $this->redirectToRoute('app_textoLiga_show', ['palabra' => $busqueda]);          //
     }                                                                                             //
     /**                                                                                           //
-     * @Route("/busquedaPorTitulo/{palabra}", name="app_textoTitulo_show")                        //
+     * @Route("/busquedaPorTitulo/{palabra}", name="app_textoLiga_show")                        //
      * @return \Symfony\Component\HttpFoundation\Response                                         //
      */                                                                                           //
     public function textoPalabraAction($palabra, Request $request)                                //
     {                                                                                             //
         $em = $this->getDoctrine()->getManager();                                                 //
         $bligas =$em->getRepository('AppBundle:Liga')->buscarTitulo($palabra);                    //
-        return $this->render(':busqueda:busquedaLiga.html.twig',                                      //
+        return $this->render(':busqueda:busquedaLiga.html.twig',                                  //
             [                                                                                     //
                 'bligas' => $bligas,                                                              //
             ]                                                                                     //

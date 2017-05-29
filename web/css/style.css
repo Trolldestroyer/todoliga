@@ -49,25 +49,39 @@ h1, h2, h3, h5, h6, p {
 }
 
 .sectUno {
-	height: 100%!important;
-	background-image: url('../images/img1-1.jpg');
+    height: 100%;
+    background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;	background-repeat:  no-repeat;
+    background-image: url('../images/img1-1.jpg');
 }
 
 .sectDos {
+    background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;	background-repeat:  no-repeat;
 	background-image: url('../images/img2.jpg');
 }
 
 .sectTres {
+    background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;	background-repeat:  no-repeat;
 	background-image: url('../images/img3.jpg');
 }
 
 .sectQuatro {
+    background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;	background-repeat:  no-repeat;
 	background-image: url('../images/img4.jpg');
 }
 
 .sectCinco {
-	height: 100%!important;
-	background-image: url('../images/img5.jpg');
+    background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;	background-repeat:  no-repeat;
+    background-image: url('../images/img5.jpg');
 }
 ul{
 	display: block!important;
@@ -191,7 +205,6 @@ img#logo{
 #fondoligas {
 	height: 650px!important;
 	background-image: url('../images/img4.jpg');
-	background-size: 100%;
 	background-repeat:  no-repeat;
 	background-attachment: fixed;
 	margin-top: 10px;
@@ -199,14 +212,18 @@ img#logo{
 	-moz-box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
 	box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
 	border: 2px solid rgba(171, 178, 185, 0.4);
-	background-color: rgba(48, 55, 59,0.9)!important;
+	background-color: rgba(48, 55, 59,0.6)!important;
+    background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
 }
 
 .fondoliga {
 	height: 650px!important;
 	background-image: url('../images/img6.jpg');
-	background-size: 100%;
-	background-repeat:  no-repeat;
+    background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;	background-repeat:  no-repeat;
 	background-attachment: fixed;
 	margin-top: 10px;
 	-webkit-box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
@@ -221,8 +238,9 @@ img#logo{
 .fondoequipos {
 	height: 650px!important;
 	background-image: url('../images/img5.jpg');
-	background-size: 100%;
-	background-repeat:  no-repeat;
+    background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;	background-repeat:  no-repeat;
 	background-attachment: fixed;
 	margin-top: 10px;
 	-webkit-box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
@@ -234,10 +252,12 @@ img#logo{
 }
 
 .fondoequipo {
-	height: 1500px!important;
-	background-image: url('../images/img6.jpg');
-	background-size: 100%;
-	background-repeat:  no-repeat;
+    height: 1500px!important;
+    background-image: url('../images/img6.jpg');
+    background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-repeat:  no-repeat;
 	background-attachment: fixed;
 	margin-top: 10px;
 	-webkit-box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
@@ -253,8 +273,9 @@ img#logo{
 .fondoronda {
 	height: 1050px!important;
 	background-image: url('../images/img2.jpg');
-	background-size: 100%;
-	background-repeat:  no-repeat;
+    background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;	background-repeat:  no-repeat;
 	background-attachment: fixed;
 	margin-top: 10px;
 	-webkit-box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
@@ -268,8 +289,9 @@ img#logo{
 .fondopartido {
     height: 650px!important;
     background-image: url('../images/img10.jpg');
-    background-size: 100%;
-    background-repeat:  no-repeat;
+    background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;    background-repeat:  no-repeat;
     background-attachment: fixed;
     margin-top: 10px;
     -webkit-box-shadow: 5px 8px 10px -2px rgba(0,0,0,1);
@@ -413,8 +435,9 @@ ul .botonMenuInterior{
 
 .userDefault{
 	height: 100%!important;
-	background-size: 100%!important;
-	background-image: url('../images/user.png');
+    background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;	background-image: url('../images/user.png');
 	background-repeat:  no-repeat;
 	margin-top: 1.5%;
 }
