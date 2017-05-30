@@ -205,10 +205,13 @@ class LigaController extends Controller
     public function searchAction(Request $request)                                                //
     {                                                                                             //
         $busqueda = $_POST['busqueda'];                                                           //
-        return $this->redirectToRoute('app_textoLiga_show', ['palabra' => $busqueda]);          //
+        if ($busqueda==''){                                                                       //
+            return $this->redirectToRoute('app_index_index');                                     //
+        }                                                                                         //
+        return $this->redirectToRoute('app_textoLiga_show', ['palabra' => $busqueda]);            //
     }                                                                                             //
     /**                                                                                           //
-     * @Route("/busquedaPorTitulo/{palabra}", name="app_textoLiga_show")                        //
+     * @Route("/busquedaPorTitulo/{palabra}", name="app_textoLiga_show")                          //
      * @return \Symfony\Component\HttpFoundation\Response                                         //
      */                                                                                           //
     public function textoPalabraAction($palabra, Request $request)                                //
