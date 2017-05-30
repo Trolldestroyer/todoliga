@@ -36,6 +36,10 @@ class JugadorController extends Controller
         if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
             throw $this->createAccessDeniedException();
         }
+        if (!$this->get('security.authorization_checker')->isGranted('ROLE_SUPER_ADMIN')) {
+            if (!$this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+                throw $this->createAccessDeniedException();
+            }}
         $form = $this->createForm(JugadorType::class, $c);
         if ($request->getMethod() == Request::METHOD_POST) {
             $form->handleRequest($request);
@@ -72,6 +76,10 @@ class JugadorController extends Controller
         if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
             throw $this->createAccessDeniedException();
         }
+        if (!$this->get('security.authorization_checker')->isGranted('ROLE_SUPER_ADMIN')) {
+            if (!$this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+                throw $this->createAccessDeniedException();
+            }}
         $m = $this->getDoctrine()->getManager();
         $repo = $m->getRepository('AppBundle:Jugador');
         $jugador = $repo->find($id);
@@ -99,7 +107,10 @@ class JugadorController extends Controller
         if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
             throw $this->createAccessDeniedException();
         }
-
+        if (!$this->get('security.authorization_checker')->isGranted('ROLE_SUPER_ADMIN')) {
+            if (!$this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+                throw $this->createAccessDeniedException();
+            }}
         $m = $this->getDoctrine()->getManager();
         $repo = $m->getRepository('AppBundle:Jugador');
         $jugador=$repo->find($id);
@@ -142,6 +153,10 @@ class JugadorController extends Controller
         if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
             throw $this->createAccessDeniedException();
         }
+        if (!$this->get('security.authorization_checker')->isGranted('ROLE_SUPER_ADMIN')) {
+            if (!$this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+                throw $this->createAccessDeniedException();
+            }}
         $m = $this->getDoctrine()->getManager();
         $repo = $m->getRepository('AppBundle:Jugador');
         $jugador = $repo->find($id);
@@ -164,6 +179,10 @@ class JugadorController extends Controller
         if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
             throw $this->createAccessDeniedException();
         }
+        if (!$this->get('security.authorization_checker')->isGranted('ROLE_SUPER_ADMIN')) {
+            if (!$this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+                throw $this->createAccessDeniedException();
+            }}
         $m = $this->getDoctrine()->getManager();
         $repo = $m->getRepository('AppBundle:Jugador');
         $jugador = $repo->find($id);

@@ -45,14 +45,14 @@
 {% endblock %}
 
 {% block menu %}
-    <div style="margin-top: 10px; color: white; text-align: center;" >
-        <a style=""  class=" botonMenuInterior col-xs-12 col-sm-12 col-lg-12" href="{{ path('app_liga_insertLiga') }}">Añadir Liga</a>
-    </div>
+        <div style="margin-top: 10px; color: white; text-align: center;" >
+            <a style=""  class=" botonMenuInterior col-xs-12 col-sm-12 col-lg-12" href="{{ path('app_liga_insertLiga') }}">Añadir Liga</a>
+        </div>
 
 {% endblock %}
 
-    {% block sidebar %}
+{% block sidebar %}
         <form action="{{ path('app_liga_buscar') }}" method="post">
             <input type="text" name="busqueda" placeholder="Busqueda de liga...">
         </form>
-    {% endblock %}
+{% endblock %}

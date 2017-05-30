@@ -28,22 +28,6 @@ class EntrenadorController extends Controller
         );
     }
 
-    /**
-     * @Route("/allEntrenadores/{slug}.html", name="app_entrenador_entrenadores")
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function indexAllEntrenadorAction($slug)
-    {
-        $m = $this->getDoctrine()->getManager();
-        $repo=$m->getRepository('AppBundle:Liga');
-        $liga = $repo->find($slug);
-        return $this->render(':entrenador:entrenadores.html.twig',
-            [
-                'liga'=> $liga,
-
-            ]
-        );
-    }
 
     /**
      * @Route("/insertEntrenador/{id}", name="app_entrenador_insertEntrenador")
@@ -55,6 +39,10 @@ class EntrenadorController extends Controller
         if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
             throw $this->createAccessDeniedException();
         }
+        if (!$this->get('security.authorization_checker')->isGranted('ROLE_SUPER_ADMIN')) {
+            if (!$this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+                throw $this->createAccessDeniedException();
+            }}
         $form = $this->createForm(EntrenadorType::class, $c);
         if ($request->getMethod() == Request::METHOD_POST) {
             $form->handleRequest($request);
@@ -86,6 +74,10 @@ class EntrenadorController extends Controller
         if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
             throw $this->createAccessDeniedException();
         }
+        if (!$this->get('security.authorization_checker')->isGranted('ROLE_SUPER_ADMIN')) {
+            if (!$this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+                throw $this->createAccessDeniedException();
+            }}
         $m = $this->getDoctrine()->getManager();
         $repo = $m->getRepository('AppBundle:Entrenador');
         $entrenador = $repo->find($id);
@@ -113,7 +105,10 @@ class EntrenadorController extends Controller
         if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
             throw $this->createAccessDeniedException();
         }
-
+        if (!$this->get('security.authorization_checker')->isGranted('ROLE_SUPER_ADMIN')) {
+            if (!$this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+                throw $this->createAccessDeniedException();
+            }}
         $m = $this->getDoctrine()->getManager();
         $repo = $m->getRepository('AppBundle:Entrenador');
         $entrenador=$repo->find($id);

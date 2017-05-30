@@ -42,9 +42,10 @@ class EquipoController extends Controller
             throw $this->createAccessDeniedException();
         }
 
-        if (!$this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
-            throw $this->createAccessDeniedException();
-        }
+        if (!$this->get('security.authorization_checker')->isGranted('ROLE_SUPER_ADMIN')) {
+            if (!$this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+                throw $this->createAccessDeniedException();
+            }}
 
         $form = $this->createForm(EquipoType::class, $c);
         if ($request->getMethod() == Request::METHOD_POST) {
@@ -82,6 +83,10 @@ class EquipoController extends Controller
         if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
             throw $this->createAccessDeniedException();
         }
+        if (!$this->get('security.authorization_checker')->isGranted('ROLE_SUPER_ADMIN')) {
+            if (!$this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+                throw $this->createAccessDeniedException();
+            }}
         $m = $this->getDoctrine()->getManager();
         $repo = $m->getRepository('AppBundle:Equipo');
         $equipo = $repo->find($id);
@@ -106,6 +111,10 @@ class EquipoController extends Controller
         if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
             throw $this->createAccessDeniedException();
         }
+        if (!$this->get('security.authorization_checker')->isGranted('ROLE_SUPER_ADMIN')) {
+            if (!$this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+                throw $this->createAccessDeniedException();
+            }}
         $m = $this->getDoctrine()->getManager();
         $repo = $m->getRepository('AppBundle:Equipo');
         $equipo=$repo->find($id);
@@ -147,6 +156,10 @@ class EquipoController extends Controller
             if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
                 throw $this->createAccessDeniedException();
             }
+            if (!$this->get('security.authorization_checker')->isGranted('ROLE_SUPER_ADMIN')) {
+                if (!$this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+                    throw $this->createAccessDeniedException();
+                }}
             $m = $this->getDoctrine()->getManager();
             $repo = $m->getRepository('AppBundle:Equipo');
             $equipo = $repo->find($id);
@@ -169,6 +182,10 @@ class EquipoController extends Controller
         if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
             throw $this->createAccessDeniedException();
         }
+        if (!$this->get('security.authorization_checker')->isGranted('ROLE_SUPER_ADMIN')) {
+            if (!$this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+                throw $this->createAccessDeniedException();
+            }}
         $m = $this->getDoctrine()->getManager();
         $repo = $m->getRepository('AppBundle:Equipo');
         $equipo = $repo->find($id);
@@ -192,6 +209,10 @@ class EquipoController extends Controller
         if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
             throw $this->createAccessDeniedException();
         }
+        if (!$this->get('security.authorization_checker')->isGranted('ROLE_SUPER_ADMIN')) {
+            if (!$this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+                throw $this->createAccessDeniedException();
+            }}
         $m = $this->getDoctrine()->getManager();
         $repo = $m->getRepository('AppBundle:Equipo');
         $equipo = $repo->find($id);
@@ -214,6 +235,10 @@ class EquipoController extends Controller
         if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
             throw $this->createAccessDeniedException();
         }
+        if (!$this->get('security.authorization_checker')->isGranted('ROLE_SUPER_ADMIN')) {
+            if (!$this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+                throw $this->createAccessDeniedException();
+            }}
         $m = $this->getDoctrine()->getManager();
         $repo = $m->getRepository('AppBundle:Equipo');
         $equipo = $repo->find($id);

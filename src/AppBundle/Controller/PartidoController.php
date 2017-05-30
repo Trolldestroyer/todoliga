@@ -45,6 +45,10 @@ class PartidoController extends Controller
         if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
             throw $this->createAccessDeniedException();
         }
+        if (!$this->get('security.authorization_checker')->isGranted('ROLE_SUPER_ADMIN')) {
+            if (!$this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+                throw $this->createAccessDeniedException();
+            }}
         $form = $this->createForm(PartidoType::class, $c);
         if ($request->getMethod() == Request::METHOD_POST) {
             $form->handleRequest($request);
@@ -75,6 +79,10 @@ class PartidoController extends Controller
         if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
             throw $this->createAccessDeniedException();
         }
+        if (!$this->get('security.authorization_checker')->isGranted('ROLE_SUPER_ADMIN')) {
+            if (!$this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+                throw $this->createAccessDeniedException();
+            }}
         $m = $this->getDoctrine()->getManager();
         $repo = $m->getRepository('AppBundle:Partido');
         $partido=$repo->find($id);
@@ -102,7 +110,10 @@ class PartidoController extends Controller
         if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
             throw $this->createAccessDeniedException();
         }
-
+        if (!$this->get('security.authorization_checker')->isGranted('ROLE_SUPER_ADMIN')) {
+            if (!$this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+                throw $this->createAccessDeniedException();
+            }}
         $m = $this->getDoctrine()->getManager();
         $repo = $m->getRepository('AppBundle:Partido');
         $partido=$repo->find($id);
@@ -133,6 +144,10 @@ class PartidoController extends Controller
         if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
             throw $this->createAccessDeniedException();
         }
+        if (!$this->get('security.authorization_checker')->isGranted('ROLE_SUPER_ADMIN')) {
+            if (!$this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+                throw $this->createAccessDeniedException();
+            }}
         $m = $this->getDoctrine()->getManager();
         $repo = $m->getRepository('AppBundle:Partido');
         $partido=$repo->find($id);

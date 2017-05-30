@@ -4,6 +4,7 @@
 
 {% block fos_user_content %}
     <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
+    <h2><a href="{{ path('app_index_index') }}" class=" botonMenuInterior col-xs-12 col-sm-12 col-lg-12" style="color: #adadad; text-decoration: none;" id="milk" >Ir a Inicio</a></h2>
     {% if targetUrl %}
     <p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
     {% endif %}

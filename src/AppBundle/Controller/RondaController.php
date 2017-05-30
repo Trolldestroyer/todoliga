@@ -40,10 +40,10 @@ class RondaController extends Controller
             throw $this->createAccessDeniedException();
         }
 
-        if (!$this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
-            throw $this->createAccessDeniedException();
-        }
-
+        if (!$this->get('security.authorization_checker')->isGranted('ROLE_SUPER_ADMIN')) {
+            if (!$this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+                throw $this->createAccessDeniedException();
+            }}
         $form = $this->createForm(RondaType::class, $c);
         if ($request->getMethod() == Request::METHOD_POST) {
             $form->handleRequest($request);
@@ -80,6 +80,10 @@ class RondaController extends Controller
         if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
             throw $this->createAccessDeniedException();
         }
+        if (!$this->get('security.authorization_checker')->isGranted('ROLE_SUPER_ADMIN')) {
+            if (!$this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+                throw $this->createAccessDeniedException();
+            }}
         $m = $this->getDoctrine()->getManager();
         $repo = $m->getRepository('AppBundle:Ronda');
         $ronda = $repo->find($id);
@@ -104,6 +108,10 @@ class RondaController extends Controller
         if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
             throw $this->createAccessDeniedException();
         }
+        if (!$this->get('security.authorization_checker')->isGranted('ROLE_SUPER_ADMIN')) {
+            if (!$this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+                throw $this->createAccessDeniedException();
+            }}
         $m = $this->getDoctrine()->getManager();
         $repo = $m->getRepository('AppBundle:Ronda');
         $ronda=$repo->find($id);

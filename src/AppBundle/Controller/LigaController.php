@@ -49,10 +49,10 @@ class LigaController extends Controller
         if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
             throw $this->createAccessDeniedException();
         }
-
-        if (!$this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
-            throw $this->createAccessDeniedException();
-        }
+        if (!$this->get('security.authorization_checker')->isGranted('ROLE_SUPER_ADMIN')) {
+            if (!$this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+                throw $this->createAccessDeniedException();
+        }}
         $form = $this->createForm(LigaType::class, $p);
         return $this->render(':liga:form.html.twig',
             [
@@ -68,12 +68,10 @@ class LigaController extends Controller
     public function doinsertLigaAction(Request $request)
     {
         $p=new Liga();
-        //añadimos creator
         if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
             throw $this->createAccessDeniedException();
         }
-        // set creator in our object
-        //is granted
+
         $user = $this->get('security.token_storage')->getToken()->getUser();
         $p->setCreador($user);
         //create Form
@@ -102,6 +100,10 @@ class LigaController extends Controller
         if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
             throw $this->createAccessDeniedException();
         }
+        if (!$this->get('security.authorization_checker')->isGranted('ROLE_SUPER_ADMIN')) {
+            if (!$this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+                throw $this->createAccessDeniedException();
+            }}
         $m = $this->getDoctrine()->getManager();
         $repo = $m->getRepository('AppBundle:Liga');
         $liga = $repo->find($id);
@@ -125,7 +127,10 @@ class LigaController extends Controller
         if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
             throw $this->createAccessDeniedException();
         }
-
+        if (!$this->get('security.authorization_checker')->isGranted('ROLE_SUPER_ADMIN')) {
+            if (!$this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+                throw $this->createAccessDeniedException();
+            }}
         $m=$this->getDoctrine()->getManager();
         $repo=$m->getRepository('AppBundle:Liga');
         $liga=$repo->find($id);
