@@ -64,7 +64,7 @@ class EquipoController extends Controller
                 $c->setLiga($liga);
                 $m->persist($c);
                 $m->flush();
-                return $this->redirectToRoute('app_equipo_equipos', ['slug' => $id]);
+                return $this->redirectToRoute('app_equipo_equipos', ['id' => $id]);
             }
         }
         return $this->render(':equipo:form.html.twig', [
@@ -99,7 +99,7 @@ class EquipoController extends Controller
         }
         $m->remove($equipo);
         $m->flush();
-        return $this->redirectToRoute('app_equipo_equipos', ['slug' => $ligaid]);
+        return $this->redirectToRoute('app_equipo_equipos', ['id' => $ligaid]);
     }
 
     /**
