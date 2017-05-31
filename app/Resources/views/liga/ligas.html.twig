@@ -45,10 +45,11 @@
 {% endblock %}
 
 {% block menu %}
+    {% if(app.user.hasRole("ROLE_ADMIN")) or (app.user.username == "Albert") %}
         <div style="margin-top: 10px; color: white; text-align: center;" >
             <a style=""  class=" botonMenuInterior col-xs-12 col-sm-12 col-lg-12" href="{{ path('app_liga_insertLiga') }}">Añadir Liga</a>
         </div>
-
+    {% endif %}
 {% endblock %}
 
 {% block sidebar %}
