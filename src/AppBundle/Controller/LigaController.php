@@ -29,7 +29,7 @@ class LigaController extends Controller
             $request->query->getInt('page', 1),
             Liga::PAGINATION_ITEMS,
             [
-                'wrap-queries' => true, // https://github.com/KnpLabs/knp-components/blob/master/doc/pager/config.md
+                'wrap-queries' => true,
             ]
         );
         return $this->render(':liga:ligas.html.twig',
