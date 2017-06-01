@@ -43,7 +43,7 @@
             </div>
             <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 5px; ">
                 {% for equipo in liga.equipos %}
-                        <div class=" col-lg-6 col-md-5 col-sm-5 col-xs-6" style="margin-bottom: 5px; "><a class="grisclaro" href="{{ path('app_equipo_showEquipo', {'slug': equipo.id}) }}">{{ equipo.nombre }}</a></div>
+                        <div class=" col-lg-6 col-md-5 col-sm-5 col-xs-12" style="margin-bottom: 5px; "><a class="grisclaro" href="{{ path('app_equipo_showEquipo', {'slug': equipo.id}) }}">{{ equipo.nombre }}</a></div>
                 {% endfor %}
             </div>
 
